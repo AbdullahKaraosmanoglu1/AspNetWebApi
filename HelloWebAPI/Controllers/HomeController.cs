@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HelloWebAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HelloWebAPI.Controllers
 {
@@ -7,9 +8,14 @@ namespace HelloWebAPI.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public String GetMessage()
+        public IActionResult GetMessage()
         {
-            return "S.A Dost";
+            var response = new ResponseModel();
+
+            response.StatusCode = 200;
+            response.Message = "Success";
+
+            return Ok(response);
         }
     }
 }
