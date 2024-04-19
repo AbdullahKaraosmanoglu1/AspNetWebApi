@@ -18,6 +18,7 @@ namespace Logging.Controllers
         [HttpGet]
         public IActionResult GetAllProducts()
         {
+
             var products = new List<ProductModel>()
             {
                 new ProductModel { Id = 1,Name="Computer"},
