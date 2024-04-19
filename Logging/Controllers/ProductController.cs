@@ -29,5 +29,13 @@ namespace Logging.Controllers
 
             return Ok(products);
         }
+
+        [HttpPost]
+        public IActionResult GetAllProducts([FromBody] ProductModel productModel)
+        {    
+            _logger.LogWarning("Product has been created.");
+
+            return StatusCode(201); //Created.
+        }
     }
 }
