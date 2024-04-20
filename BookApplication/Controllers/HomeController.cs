@@ -50,7 +50,7 @@ namespace BookApplication.Controllers
         {
             if (bookModel is null)
             {
-                _logger.LogWarning("CreateBook action has been called. BookModel is null");
+                _logger.LogWarning("BookModel is null");
                 return BadRequest(); //404
             }
 
@@ -59,6 +59,35 @@ namespace BookApplication.Controllers
             _logger.LogInformation("CreateBook action has been called");
 
             return Ok(bookModel);
+        }
+
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateBook([FromRoute(Name = "id")] int id, [FromBody] BookModel bookModel)
+        {
+            //Check Book?
+            var entity = ApplicationContext
+                .BooksList
+                .Find(x => x.Id.Equals(id));
+
+            if (entity is null)
+            {
+                _logger.LogWarning("BookModel Not Found.");
+                return NotFound();
+            }
+
+            //Check id?
+            if (id != bookModel.Id)
+            {
+                _logger.LogWarning("Bad Request.");
+                return BadRequest(id);
+            }
+
+            ApplicationContext.BooksList.Remove(entity);
+            bookModel.Id = entity.Id;
+            ApplicationContext.BooksList.Add(bookModel);
+            return Ok(bookModel);
+
+
         }
     }
 }
