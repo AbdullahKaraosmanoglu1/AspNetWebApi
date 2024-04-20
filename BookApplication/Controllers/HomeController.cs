@@ -89,5 +89,28 @@ namespace BookApplication.Controllers
 
 
         }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteBook([FromRoute(Name = "id")] int id)
+        {
+            var book = ApplicationContext
+                           .BooksList
+                           .Find(x => x.Id.Equals(id));
+
+            if (book is null)
+            {
+                _logger.LogWarning("Book Not Found.");
+                return NotFound();
+            }
+
+            if (id != book.Id)
+            {
+                _logger.LogWarning("Bad Request.");
+                return BadRequest(id);
+            }
+
+            ApplicationContext.BooksList.Remove(book);
+            return Ok();
+        }
     }
 }
