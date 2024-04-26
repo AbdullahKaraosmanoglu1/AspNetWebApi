@@ -1,6 +1,6 @@
 ﻿using BookApplication.Data.Entity;
 
-namespace BookApplication.Services.Service.BookCategoryService
+namespace BookApplication.Services.Service.BookCategoryServices
 {
     public interface IBookCategoryService
     {

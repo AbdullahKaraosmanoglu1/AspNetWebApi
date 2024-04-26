@@ -1,13 +1,13 @@
 ﻿using BookApplication.Data.Entity;
-using System.Linq.Expressions;
+using BookApplication.Data.Repository.UserRepository;
 
-namespace BookApplication.Data.Repository.UserRepository
+namespace BookApplication.Services.Service.UserServices
 {
-    public class UserRepository : IUserRepository
+    public class UserSevice : IUserSevice
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserRepository _userRepository;
 
-        public UserRepository(IUserRepository userRepository)
+        public UserSevice(UserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -19,7 +19,7 @@ namespace BookApplication.Data.Repository.UserRepository
 
         public async Task<bool> DeleteAsync(int id)
         {
-            return await _userRepository.DeleteAsync(id);
+            return await (_userRepository.DeleteAsync(id));
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
@@ -30,11 +30,6 @@ namespace BookApplication.Data.Repository.UserRepository
         public async Task<User> GetByIdAsync(int id)
         {
             return await _userRepository.GetByIdAsync(id);
-        }
-
-        public Task<User> GetByIdAsync(Expression<Func<User, bool>> expression, bool trackChanges)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task SaveAsync()
