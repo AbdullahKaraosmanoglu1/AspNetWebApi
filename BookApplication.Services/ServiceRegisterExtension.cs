@@ -15,9 +15,9 @@ namespace BookApplication.Services
             services.AddScoped<IUserBookSevice, UserBookSevice>();
             services.AddScoped<IUserSevice, UserSevice>();
 
-
-
             return services;
         }
+
+        public static 
     }
 }
