@@ -32,9 +32,10 @@ namespace BookApplication.Data.Repository.UserBookRepository
             return await _userBookRepository.GetByIdAsync(id);
         }
 
-        public Task<UserBook> GetByIdAsync(Expression<Func<UserBook, bool>> expression, bool trackChanges)
+        public async Task<IQueryable<UserBook>> GetByConditionAsync(Expression<Func<UserBook, bool>> expression, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var result = await _userBookRepository.GetByConditionAsync(expression, trackChanges);
+            return result;
         }
 
         public async Task SaveAsync()
