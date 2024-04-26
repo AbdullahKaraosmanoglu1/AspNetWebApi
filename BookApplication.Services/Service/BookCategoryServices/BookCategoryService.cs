@@ -1,7 +1,7 @@
 ﻿using BookApplication.Data.Entity;
 using BookApplication.Data.Repository.BookCategoryRepository;
 
-namespace BookApplication.Services.Service.BookCategoryService
+namespace BookApplication.Services.Service.BookCategoryServices
 {
     public class BookCategoryService : IBookCategoryService
     {

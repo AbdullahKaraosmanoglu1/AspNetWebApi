@@ -1,15 +1,9 @@
-﻿using BookApplication.Data.Entity;
-using BookApplication.Data.Repository;
+﻿using BookApplication.Data.Repository;
 using BookApplication.Data.Repository.BookCategoryRepository;
 using BookApplication.Data.Repository.BookRepository;
 using BookApplication.Data.Repository.UserBookRepository;
 using BookApplication.Data.Repository.UserRepository;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookApplication.Data
 {

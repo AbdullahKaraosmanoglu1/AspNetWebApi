@@ -1,6 +1,7 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Entity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BookApplication.Data.Repository
 {
@@ -45,6 +46,11 @@ namespace BookApplication.Data.Repository
         public async Task<T> GetByIdAsync(int id)
         {
             return await _table.Where(x => x.IsDeleted == false).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public Task<T> GetByIdAsync(Expression<Func<T, bool>> expression, bool trackChanges)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task SaveAsync()
