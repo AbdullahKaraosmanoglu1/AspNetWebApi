@@ -5,9 +5,10 @@ using System.Linq.Expressions;
 
 namespace BookApplication.Data.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private BookAppDataBaseContext _dbContext;
+        /*private*/
+        protected BookAppDataBaseContext _dbContext;
         private DbSet<T> _table;
 
         public GenericRepository(BookAppDataBaseContext dbContext, DbSet<T> table)
@@ -48,10 +49,13 @@ namespace BookApplication.Data.Repository
             return await _table.Where(x => x.IsDeleted == false).FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<T> GetByIdAsync(Expression<Func<T, bool>> expression, bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IQueryable<T>> GetByConditionAsync(Expression<Func<T, bool>> expression,
+            bool trackChanges) =>
+             !trackChanges ?
+            _dbContext.Set<T>().Where(expression).AsNoTracking() :
+            _dbContext.Set<T>().Where(expression);
+
+
 
         public async Task SaveAsync()
         {

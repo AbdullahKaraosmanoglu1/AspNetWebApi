@@ -32,9 +32,10 @@ namespace BookApplication.Data.Repository.BookCategoryRepository
             return await _bookCategoryRepository.GetByIdAsync(id);
         }
 
-        public Task<BookCategory> GetByIdAsync(Expression<Func<BookCategory, bool>> expression, bool trackChanges)
+        public async Task<IQueryable<BookCategory>> GetByConditionAsync(Expression<Func<BookCategory, bool>> expression, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var result = await _bookCategoryRepository.GetByConditionAsync(expression, trackChanges);
+            return result;
         }
 
         public async Task SaveAsync()

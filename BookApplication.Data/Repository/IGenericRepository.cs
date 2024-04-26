@@ -7,7 +7,7 @@ namespace BookApplication.Data.Repository
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> GetByIdAsync(Expression<Func<T, bool>> expression, bool trackChanges);
+        Task<IQueryable<T>> GetByConditionAsync(Expression<Func<T, bool>> expression, bool trackChanges);
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<bool> DeleteAsync(int id);
