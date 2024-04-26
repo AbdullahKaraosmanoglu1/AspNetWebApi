@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookApplication.Data.Entity
+﻿namespace BookApplication.Data.Entity
 {
     public class BaseEntity
     {
