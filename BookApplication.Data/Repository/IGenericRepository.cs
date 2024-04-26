@@ -1,5 +1,4 @@
 ﻿using BookApplication.Data.Entity;
-using System.Linq.Expressions;
 
 namespace BookApplication.Data.Repository
 {
@@ -7,7 +6,6 @@ namespace BookApplication.Data.Repository
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<IQueryable<T>> GetByConditionAsync(Expression<Func<T, bool>> expression, bool trackChanges);
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<bool> DeleteAsync(int id);

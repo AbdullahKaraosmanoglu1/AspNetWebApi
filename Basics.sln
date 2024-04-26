@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging", "Logging\Logging.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApplication.WebApi", "BookApplication\BookApplication.WebApi.csproj", "{7490D991-6BBD-42B6-96E4-7FCB9D319CB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApplication.Data", "BookApplication.Data\BookApplication.Data.csproj", "{D62731D2-653A-4967-803B-C81C25FC7472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApplication.Data", "BookApplication.Data\BookApplication.Data.csproj", "{D62731D2-653A-4967-803B-C81C25FC7472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApplication.Services", "BookApplication.Services\BookApplication.Services.csproj", "{FD0016BA-E7DD-4B0A-B0FB-54A6C0F61776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApplication.Services", "BookApplication.Services\BookApplication.Services.csproj", "{FD0016BA-E7DD-4B0A-B0FB-54A6C0F61776}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{63BF4958-6356-4E0E-8265-10BDE8E68F5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BC17E17-9573-4857-B503-A7F9C15E7F5D} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
+		{18EEB175-00A4-4729-9EC7-FE9D4ABF9072} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
+		{39A0A8BC-87A1-4E68-9074-CB096E95E6C9} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {032B4195-C298-4AB7-8A3F-BFB0724550F6}

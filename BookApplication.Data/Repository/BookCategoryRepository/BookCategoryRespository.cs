@@ -1,5 +1,4 @@
 ﻿using BookApplication.Data.Entity;
-using System.Linq.Expressions;
 
 namespace BookApplication.Data.Repository.BookCategoryRepository
 {
@@ -30,12 +29,6 @@ namespace BookApplication.Data.Repository.BookCategoryRepository
         public async Task<BookCategory> GetByIdAsync(int id)
         {
             return await _bookCategoryRepository.GetByIdAsync(id);
-        }
-
-        public async Task<IQueryable<BookCategory>> GetByConditionAsync(Expression<Func<BookCategory, bool>> expression, bool trackChanges)
-        {
-            var result = await _bookCategoryRepository.GetByConditionAsync(expression, trackChanges);
-            return result;
         }
 
         public async Task SaveAsync()

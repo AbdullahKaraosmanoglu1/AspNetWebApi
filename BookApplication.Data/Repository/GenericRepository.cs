@@ -1,7 +1,6 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Entity;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace BookApplication.Data.Repository
 {
@@ -27,7 +26,7 @@ namespace BookApplication.Data.Repository
 
         public async Task<bool> DeleteAsync(int id)
         {
-            T entity = await _table.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
+            T entity = await _table.Where(x => x.Id == id && x.IsDeleted != true).FirstOrDefaultAsync();
 
             if (entity == null)
             {
@@ -36,6 +35,7 @@ namespace BookApplication.Data.Repository
 
             entity.IsDeleted = true;
             _dbContext.Entry(entity).State = EntityState.Modified;
+
             return true;
         }
 
@@ -46,16 +46,8 @@ namespace BookApplication.Data.Repository
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _table.Where(x => x.IsDeleted == false).FirstOrDefaultAsync(x => x.Id == id);
+            return await _table.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
-
-        public async Task<IQueryable<T>> GetByConditionAsync(Expression<Func<T, bool>> expression,
-            bool trackChanges) =>
-             !trackChanges ?
-            _dbContext.Set<T>().Where(expression).AsNoTracking() :
-            _dbContext.Set<T>().Where(expression);
-
-
 
         public async Task SaveAsync()
         {
@@ -64,13 +56,8 @@ namespace BookApplication.Data.Repository
 
         public async Task<T> UpdateAsync(T entity)
         {
-            if (entity == null)
-            {
-                return null;
-            }
 
             _table.Update(entity);
-            await _dbContext.SaveChangesAsync();
 
             return entity;
         }
