@@ -17,7 +17,5 @@ namespace BookApplication.Services
 
             return services;
         }
-
-        public static 
     }
 }
