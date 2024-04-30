@@ -22,8 +22,15 @@
        << SERVICE MANAGER >>
        << PRESENTATION LAYER >>
 
-8- ) NLog Uygulaması (NLog Implementation)
+## 8- ) NLog Uygulaması (NLog Implementation)
 
+       << NLog.Extensions.Logging >>
+       << Logger Service >>
+       << Logger Manager >>
+       << nLog.config >>
+
+
+       
 9- ) Global Hata Yönetimi (Global Error Handling)
 
 10-) AutoMapper
