@@ -12,8 +12,8 @@ namespace BookApplication.Services.Extensions
         {
             services.AddScoped<IBookCategoryService, BookCategoryService>();
             services.AddScoped<IBookService, BookService>();
-            services.AddScoped<IUserBookSevice, UserBookSevice>();
-            services.AddScoped<IUserSevice, UserSevice>();
+            services.AddScoped<IUserBookService, UserBookService>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

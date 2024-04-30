@@ -3,11 +3,11 @@ using BookApplication.Data.Repository.UserRepository;
 
 namespace BookApplication.Services.Service.UserServices
 {
-    public class UserSevice : IUserSevice
+    public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserSevice(UserRepository userRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

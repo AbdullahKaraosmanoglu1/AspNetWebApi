@@ -2,7 +2,7 @@
 
 namespace BookApplication.Services.Service.UserBookServices
 {
-    public interface IUserBookSevice
+    public interface IUserBookService
     {
         Task<IEnumerable<UserBook>> GetAllAsync();
         Task<UserBook> GetByIdAsync(int id);

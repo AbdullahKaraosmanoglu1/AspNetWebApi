@@ -1,4 +1,4 @@
-﻿using BookApplication.Models;
+﻿using BookApplication.WebApi.Models.UserModels;
 
 namespace BookApplication.Data
 {

@@ -7,15 +7,10 @@ namespace BookApplication.Data.BookApplicationDbContext
     {
         public BookAppDataBaseContext(DbContextOptions options) : base(options) { }
 
-        DbSet<Book> Books { get; set; }
-        DbSet<BookCategory> BookCategories { get; set; }
-        DbSet<User> Users { get; set; }
-        DbSet<UserBook> UserBooks { get; set; }
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<BookCategory> BookCategories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserBook> UserBooks { get; set; }
+   
     }
 }
