@@ -1,5 +1,6 @@
 using BookApplication.Data.Extensions;
 using BookApplication.Services.Extensions;
+using BookApplication.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.RegisterSqlConnect(builder.Configuration);
 builder.Services.RegisterRepositories();
 /* Configure Service Extension */
 builder.Services.RegisterServices();
+/* Configure AutoMapper Extension */
+builder.Services.AutoMapperExtension();
+
 
 var app = builder.Build();
 
