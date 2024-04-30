@@ -4,7 +4,7 @@ using BookApplication.Services.Service.UserBookServices;
 using BookApplication.Services.Service.UserServices;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BookApplication.Services
+namespace BookApplication.Services.Extensions
 {
     public static class ServiceRegisterExtension
     {

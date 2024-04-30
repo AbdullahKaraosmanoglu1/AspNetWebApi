@@ -1,4 +1,4 @@
-﻿namespace BookApplication.Models
+﻿namespace BookApplication.WebApi.Models.UserModels
 {
     public class BookModel
     {
