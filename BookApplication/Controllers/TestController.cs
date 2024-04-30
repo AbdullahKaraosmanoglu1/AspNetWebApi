@@ -1,4 +1,7 @@
-﻿using BookApplication.Data;
+﻿using AutoMapper;
+using BookApplication.Data;
+using BookApplication.Data.Entity;
+using BookApplication.Services.Service.BookServices;
 using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +10,17 @@ namespace BookApplication.Controllers
 {
     [Route("api/Books")]
     [ApiController]
-    public class HomeController : ControllerBase
+    public class TestController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<TestController> _logger;
+        private readonly IMapper _mapper;
+        private readonly IBookService _bookService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public TestController(ILogger<TestController> logger, IMapper mapper, IBookService bookService)
         {
             _logger = logger;
+            _mapper = mapper;
+            _bookService = bookService;
         }
 
         [HttpGet]
@@ -49,17 +56,27 @@ namespace BookApplication.Controllers
         [HttpPost]
         public IActionResult CreateBook([FromBody] BookModel bookModel)
         {
-            if (bookModel is null)
-            {
-                _logger.LogWarning("BookModel is null");
-                return BadRequest(); //404
-            }
 
-            ApplicationContext.BooksList.Add(bookModel);
+            var bookModelMap = _mapper.Map<Book>(bookModel);
 
-            _logger.LogInformation("CreateBook action has been called");
+            var createBook = _bookService.CreateAsync(bookModelMap);
 
-            return Ok(bookModel);
+
+            //    var adminUserModel = _mapper.Map<AdminUser>(createAdminModel);
+
+            //    var createAdminUser = await _adminUserService.CreateAsync(adminUserModel);
+
+            //if (bookModel is null)
+            //{
+            //    _logger.LogWarning("BookModel is null");
+            //    return BadRequest(); //404
+            //}
+
+            //ApplicationContext.BooksList.Add(bookModel);
+
+            //_logger.LogInformation("CreateBook action has been called");
+
+            return Ok(createBook);
         }
 
         [HttpPut("{id:int}")]
