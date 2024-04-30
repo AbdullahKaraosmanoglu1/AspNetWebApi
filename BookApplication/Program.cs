@@ -1,5 +1,5 @@
-using BookApplication.Data;
-using BookApplication.Services;
+using BookApplication.Data.Extensions;
+using BookApplication.Services.Extensions;
 using BookApplication.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

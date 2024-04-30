@@ -5,7 +5,7 @@ using BookApplication.Data.Repository.UserBookRepository;
 using BookApplication.Data.Repository.UserRepository;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BookApplication.Data
+namespace BookApplication.Data.Extensions
 {
     public static class RepositoryRegisterExtension
     {

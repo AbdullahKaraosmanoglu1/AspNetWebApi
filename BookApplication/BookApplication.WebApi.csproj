@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
@@ -24,6 +25,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookApplication.Services\BookApplication.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\BookModels\" />
+    <Folder Include="Models\BookCategoryModels\" />
+    <Folder Include="Models\UserBookModels\" />
   </ItemGroup>
 
 </Project>
