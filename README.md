@@ -10,7 +10,17 @@
 
 6- ) Entity Framework Core
 
-7- ) Yazılım Mimarisi (Software Architecture)
+## 7- ) Yazılım Mimarisi (Software Architecture)
+        **Entites Layer**
+        **Repositories Layer**
+        **Repository Base**
+        **Repository Manager**
+        **Repository Extensions**
+        **Lazy Loading**
+        **Service Extensions**
+        **Service Layer**
+        **Service Manager**
+        **Presentation Layer**
 
 8- ) NLog Uygulaması (NLog Implementation)
 
