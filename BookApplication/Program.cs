@@ -1,6 +1,5 @@
 using BookApplication.Data.Extensions;
 using BookApplication.Services.Extensions;
-using BookApplication.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ builder.Services.AddSwaggerGen();
 /* sqlConnection Extension */
 builder.Services.RegisterSqlConnect(builder.Configuration);
 /* Configure Repository Extension */
-builder.Services.RegisterRepository();
+builder.Services.RegisterRepositories();
 /* Configure Service Extension */
 builder.Services.RegisterServices();
 

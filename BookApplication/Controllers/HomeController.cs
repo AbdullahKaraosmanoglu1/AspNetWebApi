@@ -1,5 +1,5 @@
 ﻿using BookApplication.Data;
-using BookApplication.Models;
+using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 

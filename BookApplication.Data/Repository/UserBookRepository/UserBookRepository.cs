@@ -4,9 +4,9 @@ namespace BookApplication.Data.Repository.UserBookRepository
 {
     public class UserBookRepository : IUserBookRepository
     {
-        private readonly IUserBookRepository _userBookRepository;
+        private readonly IGenericRepository<UserBook> _userBookRepository;
 
-        public UserBookRepository(IUserBookRepository userBookRepository)
+        public UserBookRepository(IGenericRepository<UserBook> userBookRepository)
         {
             _userBookRepository = userBookRepository;
         }

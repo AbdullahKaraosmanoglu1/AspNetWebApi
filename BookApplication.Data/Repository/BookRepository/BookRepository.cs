@@ -2,11 +2,11 @@
 
 namespace BookApplication.Data.Repository.BookRepository
 {
-    public class BookRespository : IBookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly IGenericRepository<Book> _bookRepository;
 
-        public BookRespository(IGenericRepository<Book> bookRepository)
+        public BookRepository(IGenericRepository<Book> bookRepository)
         {
             _bookRepository = bookRepository;
         }

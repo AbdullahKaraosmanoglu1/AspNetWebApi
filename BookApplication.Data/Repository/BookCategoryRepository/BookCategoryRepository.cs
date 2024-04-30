@@ -2,11 +2,11 @@
 
 namespace BookApplication.Data.Repository.BookCategoryRepository
 {
-    public class BookCategoryRespository : IBookCategoryRepository
+    public class BookCategoryRepository : IBookCategoryRepository
     {
         private readonly IGenericRepository<BookCategory> _bookCategoryRepository;
 
-        public BookCategoryRespository(IGenericRepository<BookCategory> bookCategoryRepository)
+        public BookCategoryRepository(IGenericRepository<BookCategory> bookCategoryRepository)
         {
             _bookCategoryRepository = bookCategoryRepository;
         }

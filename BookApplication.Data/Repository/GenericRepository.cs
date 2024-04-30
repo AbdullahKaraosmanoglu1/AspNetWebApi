@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Data.Repository
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         /*private*/
-        protected BookAppDataBaseContext _dbContext;
+        private BookAppDataBaseContext _dbContext;
         private DbSet<T> _table;
 
-        public GenericRepository(BookAppDataBaseContext dbContext, DbSet<T> table)
+        public GenericRepository(BookAppDataBaseContext dbContext)
         {
             _dbContext = dbContext;
-            _table = table;
+            _table = dbContext.Set<T>();
         }
 
         public async Task<T> CreateAsync(T entity)
