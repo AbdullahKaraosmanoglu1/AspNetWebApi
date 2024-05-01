@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.WebApi.Models.BookModels;
 
 namespace BookApplication.WebApi.AutoMapper
 {
@@ -8,7 +9,11 @@ namespace BookApplication.WebApi.AutoMapper
 
         public MappingProfile()
         {
-            //CreateMap<BookModel, Book>().ReverseMap();
+            #region BOOK
+            CreateMap<BookModel, Book>().ReverseMap();
+            CreateMap<CreateBookModel, Book>().ReverseMap();
+            CreateMap<UpdateBookModel, Book>().ReverseMap();
+            #endregion
         }
     }
 }

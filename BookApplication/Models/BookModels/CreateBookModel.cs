@@ -8,6 +8,7 @@
         public string Publisher { get; set; }
         public string ImagePath { get; set; }
         public string SlugName { get; set; }
+        public int PrintingYear { get; set; }
         public int PageCount { get; set; }
         public decimal Price { get; set; }
         public int BookCategoryId { get; set; }
