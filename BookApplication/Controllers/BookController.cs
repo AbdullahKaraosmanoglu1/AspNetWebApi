@@ -13,13 +13,13 @@ namespace BookApplication.WebApi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly IBookService _bookService;
+        private readonly IMapper _mapper;
 
-        public BookController(IMapper mapper, IBookService bookService)
+        public BookController(IBookService bookService, IMapper mapper)
         {
-            _mapper = mapper;
             _bookService = bookService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -55,7 +55,7 @@ namespace BookApplication.WebApi.Controllers
         [HttpPost]
         public async Task<ResponseModel> CreateBookAsync([FromBody] CreateBookModel createBookModel)
         {
-            var bookModel = _mapper.Map<Book>(createBookModel);           
+            var bookModel = _mapper.Map<Book>(createBookModel);
 
             var createBook = await _bookService.CreateAsync(bookModel);
 
