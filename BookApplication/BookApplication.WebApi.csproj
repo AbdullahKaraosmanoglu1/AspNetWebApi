@@ -28,9 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\BookModels\" />
-    <Folder Include="Models\BookCategoryModels\" />
     <Folder Include="Models\UserBookModels\" />
+    <Folder Include="Models\UserModels\" />
   </ItemGroup>
 
 </Project>

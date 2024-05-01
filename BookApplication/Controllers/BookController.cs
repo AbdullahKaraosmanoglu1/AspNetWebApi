@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using BookApplication.Services.Service.BookServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookApplication.WebApi.Controllers
 {
@@ -6,5 +8,13 @@ namespace BookApplication.WebApi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IMapper _mapper;
+        private readonly IBookService _bookService;
+
+        public BookController(IMapper mapper, IBookService bookService)
+        {
+            _mapper = mapper;
+            _bookService = bookService;
+        }
     }
 }
