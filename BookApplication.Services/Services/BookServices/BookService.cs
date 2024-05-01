@@ -47,6 +47,13 @@ namespace BookApplication.Services.Service.BookServices
 
         public async Task<Book> UpdateAsync(Book entity)
         {
+            var slugName = entity.Name + " " + entity.Author;
+            var slugifiedName = slugName.GenerateSlugName();
+            entity.SlugName = slugifiedName;
+
+            //var slugifiedImagePath = entity.ImagePath.GenerateSlugForImages();
+            //entity.ImagePath = slugifiedImagePath;
+
             return await _bookRepository.UpdateAsync(entity);
         }
     }

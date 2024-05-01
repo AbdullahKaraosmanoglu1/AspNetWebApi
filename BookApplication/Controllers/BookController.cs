@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
 using BookApplication.Services.Service.BookServices;
-using BookApplication.Services.SlugHelper;
 using BookApplication.WebApi.Models;
-using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
 using Microsoft.AspNetCore.Mvc;
 
