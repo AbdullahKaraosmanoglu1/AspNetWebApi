@@ -27,9 +27,4 @@
     <ProjectReference Include="..\BookApplication.Services\BookApplication.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\UserBookModels\" />
-    <Folder Include="Models\UserModels\" />
-  </ItemGroup>
-
 </Project>
