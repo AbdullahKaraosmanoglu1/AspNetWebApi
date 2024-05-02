@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.Entity;
 using BookApplication.Data.Repository.BookCategoryRepository;
+using BookApplication.Services.NLog;
 using BookApplication.Services.SlugHelper;
 
 namespace BookApplication.Services.Service.BookCategoryServices
@@ -7,10 +8,13 @@ namespace BookApplication.Services.Service.BookCategoryServices
     public class BookCategoryService : IBookCategoryService
     {
         private readonly IBookCategoryRepository _bookCategoryRepository;
+        private readonly ILoggerService _loggerService;
 
-        public BookCategoryService(IBookCategoryRepository bookCategoryRepository)
+
+        public BookCategoryService(IBookCategoryRepository bookCategoryRepository, ILoggerService loggerService)
         {
             _bookCategoryRepository = bookCategoryRepository;
+            _loggerService = loggerService;
         }
 
         public async Task<BookCategory> CreateAsync(BookCategory entity)
@@ -18,15 +22,20 @@ namespace BookApplication.Services.Service.BookCategoryServices
             var slugName = entity.Name;
             var slugifiedName = slugName.GenerateSlugName();
             entity.SlugName = slugifiedName;
-
             //var slugifiedImagePath = entity.ImagePath.GenerateSlugForImages();
             //entity.ImagePath = slugifiedImagePath;
+
+            string message = $"New BookCategory created, information:{entity.Name}";
+            await _loggerService.LogInfo(message);
 
             return await _bookCategoryRepository.CreateAsync(entity);
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
+            string message = $"Adnmin delete BookCategory, ID information:{id}";
+            await _loggerService.LogWarning(message);
+
             return await (_bookCategoryRepository.DeleteAsync(id));
         }
 
