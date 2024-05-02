@@ -19,6 +19,7 @@ namespace BookApplication.WebApi.Controllers
             _bookCategoryService = bookCategoryService;
             _mapper = mapper;
         }
+
         [HttpGet]
         public async Task<ResponseModel> GetAllAsync()
         {
