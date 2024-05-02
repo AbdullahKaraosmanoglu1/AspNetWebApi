@@ -10,4 +10,8 @@
     <ProjectReference Include="..\BookApplication.Data\BookApplication.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.3.10" />
+  </ItemGroup>
+
 </Project>
