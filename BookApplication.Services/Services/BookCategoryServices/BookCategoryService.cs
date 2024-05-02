@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.Entity;
 using BookApplication.Data.Repository.BookCategoryRepository;
+using BookApplication.Services.SlugHelper;
 
 namespace BookApplication.Services.Service.BookCategoryServices
 {
@@ -14,6 +15,13 @@ namespace BookApplication.Services.Service.BookCategoryServices
 
         public async Task<BookCategory> CreateAsync(BookCategory entity)
         {
+            var slugName = entity.Name;
+            var slugifiedName = slugName.GenerateSlugName();
+            entity.SlugName = slugifiedName;
+
+            //var slugifiedImagePath = entity.ImagePath.GenerateSlugForImages();
+            //entity.ImagePath = slugifiedImagePath;
+
             return await _bookCategoryRepository.CreateAsync(entity);
         }
 
@@ -39,6 +47,13 @@ namespace BookApplication.Services.Service.BookCategoryServices
 
         public async Task<BookCategory> UpdateAsync(BookCategory entity)
         {
+            var slugName = entity.Name;
+            var slugifiedName = slugName.GenerateSlugName();
+            entity.SlugName = slugifiedName;
+
+            //var slugifiedImagePath = entity.ImagePath.GenerateSlugForImages();
+            //entity.ImagePath = slugifiedImagePath;
+
             return await _bookCategoryRepository.UpdateAsync(entity);
         }
     }

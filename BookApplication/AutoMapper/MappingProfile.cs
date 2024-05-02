@@ -2,6 +2,8 @@
 using BookApplication.Data.Entity;
 using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
+using BookApplication.WebApi.Models.UserBookModels;
+using BookApplication.WebApi.Models.UserModels;
 
 namespace BookApplication.WebApi.AutoMapper
 {
@@ -20,6 +22,18 @@ namespace BookApplication.WebApi.AutoMapper
             CreateMap<BookCategoryModel, BookCategory>().ReverseMap();
             CreateMap<CreateBookCategoryModel, BookCategory>().ReverseMap();
             CreateMap<UpdateBookCategoryModel, BookCategory>().ReverseMap();
+            #endregion
+
+            #region USERBOOK
+            CreateMap<UserBookModel, UserBook>().ReverseMap();
+            CreateMap<CreateUserBookModel, UserBook>().ReverseMap();
+            CreateMap<UpdateUserBookModel, UserBook>().ReverseMap();
+            #endregion
+
+            #region USER
+            CreateMap<UserModel, User>().ReverseMap();
+            CreateMap<CreateUserModel, User>().ReverseMap();
+            CreateMap<UpdateUserModel, User>().ReverseMap();
             #endregion
         }
     }
