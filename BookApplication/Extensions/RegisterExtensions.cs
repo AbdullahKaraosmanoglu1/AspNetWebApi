@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookApplication.Services.NLog;
 using BookApplication.WebApi.AutoMapper;
 
 namespace BookApplication.WebApi.Extensions
@@ -15,6 +16,11 @@ namespace BookApplication.WebApi.Extensions
             services.AddAutoMapper(typeof(Program)); // AutoMapper'ı yapılandırma
 
             return services;
+        }
+
+        public static void ConfigureNLogService(this IServiceCollection services)
+        {
+            services.AddSingleton<ILoggerService, LoggerService>();
         }
     }
 }

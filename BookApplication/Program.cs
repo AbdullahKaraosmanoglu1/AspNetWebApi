@@ -1,8 +1,13 @@
 using BookApplication.Data.Extensions;
 using BookApplication.Services.Extensions;
 using BookApplication.WebApi.Extensions;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+/*Below is the line of code written to create and display the nlog.config file of the NLog package.*/
+LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(), "nlog.config"));
 
 /* Controllers And AddNewtonsoftJson */
 builder.Services.AddControllers()
@@ -19,6 +24,8 @@ builder.Services.RegisterRepositories();
 builder.Services.RegisterServices();
 /* Configure AutoMapper Extension */
 builder.Services.AutoMapperExtension();
+/* Configure NLog Extension */
+builder.Services.ConfigureNLogService();
 
 
 var app = builder.Build();
