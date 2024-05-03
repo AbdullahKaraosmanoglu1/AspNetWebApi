@@ -16,6 +16,13 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var allowOrigin = "AllowOrigin";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowOrigin, builder =>
+    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
+
 /* sqlConnection Extension */
 builder.Services.RegisterSqlConnect(builder.Configuration);
 /* Configure Repository Extension */
@@ -35,6 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(allowOrigin);
 
 app.UseHttpsRedirection();
 
