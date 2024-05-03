@@ -1,5 +1,5 @@
 
-/*GETALL Request*/
+/* GetAll EndPoint Request*/
 $(document).ready(function () {
     $('#getDataBtn').click(function () {
         $.ajax({
@@ -13,7 +13,7 @@ $(document).ready(function () {
                     booksHtml += '<p class="name">Name: ' + book.name + '</p>';
                     booksHtml += '<p class="author">Author: ' + book.author + '</p>';
                     booksHtml += '<p class="publisher">Publisher: ' + book.publisher + '</p>';
-                    // Diðer özellikleri de ekleyebilirsiniz
+                    // Diðer özelliklerde isteðe göre eklenebilir...
                     booksHtml += '</div>';
                 });
                 $('#dataContainer').html(booksHtml); // Kitaplarýn HTML içeriðini dataContainer içine ekle
