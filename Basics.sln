@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookAplication.jquery", "BookAplication.jquery", "{C1FBC2F1-4B22-4879-BDD3-FD6272A19477}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
+		main.css = main.css
 		script.js = script.js
 	EndProjectSection
 EndProject
