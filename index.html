@@ -3,20 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
     <title>API projesi</title>
+    <link rel="stylesheet" href="main.css">
+    
 </head>
 <body>
-    <h1>Book Application</h1>
-    <button id="getDataBtn">Veri Al</button>
-        <div class="name"></div>
-        <div class="author"></div>
-        <div class="publisher"></div>
-        <div id="dataContainer">
-        <ul id="dataList"></ul>
-    </div>
+    <h1>API PROJESİ</h1>
+    <button id="getData">Veri Al</button>
+    <div id="dataContainer">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Language</th>
+                    <th>Publisher</th>
+                    <th>Image Path</th>
+                    <th>Slug Name</th>
+                    <th>Printing Year</th>
+                    <th>Page Count</th>
+                    <th>Price</th>
+                    <th>Book Category ID</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Is Active</th>
+                    <th>Is Deleted</th>
+                    <th>İşlemler</th>
 
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+            </tbody>
+        </table>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="update.js"></script>
+    <script src="delete.js"></script>
+    <script src="https://kit.fontawesome.com/8027810926.js" crossorigin="anonymous"></script>
+ 
+
 </body>
 </html>
