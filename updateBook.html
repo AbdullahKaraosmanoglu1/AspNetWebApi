@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updateBook</title>
+    <link rel="stylesheet" href="booksTable.css">
+</head>
+<body>
+    <!-- Güncelleme formu -->
+    <div id="updateForm">
+        <h2>Kitap Bilgilerini Güncelle</h2>
+        <label for="id">Id:</label>
+        <input type="text" id="id" disabled><br>
+
+        <label for="updatedName">Name:</label>
+        <input type="text" id="updatedName"><br>
+        <label for="updatedAuthor">Author:</label>
+        <input type="text" id="updatedAuthor"><br>
+        <label for="updatedLanguage">Language:</label>
+        <input type="text" id="updatedLanguage"><br>
+        <label for="updatedPublisher">Publisher:</label>
+        <input type="text" id="updatedPublisher"><br>
+        <label for="updatedImagePath">Image Path:</label>
+        <input type="text" id="updatedImagePath"><br>
+        <label for="updatedSlugName">Slug Name:</label>
+        <input type="text" id="updatedSlugName"><br>
+        <label for="updatedPrintingYear">Printing Year:</label>
+        <input type="text" id="updatedPrintingYear"><br>
+        <label for="updatedPageCount">Page Count:</label>
+        <input type="text" id="updatedPageCount"><br>
+        <label for="updatedPrice">Price:</label>
+        <input type="text" id="updatedPrice"><br>
+        <label for="updatedBookCategoryId">Book Category ID:</label>
+        <input type="text" id="updatedBookCategoryId"><br>
+        <label for="updatedCreatedDate">Created Date:</label>
+        <input type="text" id="updatedCreatedDate" disabled><br>
+        <label for="updatedUpdatedDate">Updated Date:</label>
+        <input type="text" id="updatedUpdatedDate" disabled><br>
+        <label for="updatedIsActive">Is Active:</label>
+        <select id="updatedIsActive">
+            <option value="true">True</option>
+            <option value="false">False</option>
+            <option value="null">Null</option>
+        </select><br>
+
+        <label for="updatedIsDeleted">Is Deleted:</label>
+        <input type="text" id="updatedIsDeleted" disabled><br>
+        <button id="updateButton">Güncelle</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="update.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

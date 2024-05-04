@@ -18,10 +18,24 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{63BF4958-6356-4E0E-8265-10BDE8E68F5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookAplication.jquery", "BookAplication.jquery", "{C1FBC2F1-4B22-4879-BDD3-FD6272A19477}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS", "CSS", "{6D89EB08-A702-4D45-9B98-FBB29AF9AE85}"
+	ProjectSection(SolutionItems) = preProject
+		main.css = main.css
+		booksTable.css = booksTable.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3C75060D-BC26-431F-B40A-0272A603CF8D}"
+	ProjectSection(SolutionItems) = preProject
+		script.js = script.js
+		update.js = update.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{78793679-8EA1-4EFB-B7B7-9910CB2B42C7}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
-		main.css = main.css
-		script.js = script.js
+		booksTable.html = booksTable.html
+		updateBook.html = updateBook.html
 	EndProjectSection
 EndProject
 Global
@@ -62,6 +76,9 @@ Global
 		{3BC17E17-9573-4857-B503-A7F9C15E7F5D} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
 		{18EEB175-00A4-4729-9EC7-FE9D4ABF9072} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
 		{39A0A8BC-87A1-4E68-9074-CB096E95E6C9} = {63BF4958-6356-4E0E-8265-10BDE8E68F5E}
+		{6D89EB08-A702-4D45-9B98-FBB29AF9AE85} = {C1FBC2F1-4B22-4879-BDD3-FD6272A19477}
+		{3C75060D-BC26-431F-B40A-0272A603CF8D} = {C1FBC2F1-4B22-4879-BDD3-FD6272A19477}
+		{78793679-8EA1-4EFB-B7B7-9910CB2B42C7} = {C1FBC2F1-4B22-4879-BDD3-FD6272A19477}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {032B4195-C298-4AB7-8A3F-BFB0724550F6}
