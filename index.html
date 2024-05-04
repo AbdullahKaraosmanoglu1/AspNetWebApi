@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>API projesi</title>
+    <title>JQuery-Ajax Web.API</title>
 </head>
 <body>
     <h1>Book Application</h1>
-    <button id="getDataBtn">Veri Al</button>
-        <div class="name"></div>
-        <div class="author"></div>
-        <div class="publisher"></div>
-        <div id="dataContainer">
+    <h2>Tüm Kitapları Getir</h2>
+    <button id="getAllBooksBtn">Get All Books</button>
+    <div class="name"></div>
+    <div class="author"></div>
+    <div class="publisher"></div>
+    <div id="dataContainer">
         <ul id="dataList"></ul>
     </div>
+
+    <div id="getBookByIdSection">
+        <h2>Belirli Bir Kitabı Getir</h2>
+        <input type="text" id="bookIdInput" placeholder="Kitap ID'sini Girin">
+        <button id="getByIdBtn">Get Book By Id</button>
+        <div id="singleBookContainer"></div>
+    </div>
+
+    <div id="createBookSection">
+        <h2>Yeni Kitap Oluştur</h2>
+        <input type="text" id="bookNameInput" placeholder="Kitap Adı">
+        <input type="text" id="authorInput" placeholder="Yazar">
+        <input type="text" id="languageInput" placeholder="Dil">
+        <input type="text" id="publisherInput" placeholder="Yayınevi">
+        <input type="text" id="imagePathInput" placeholder="Resim Yolu">
+        <input type="number" id="printingYearInput" placeholder="Basım Yılı">
+        <input type="number" id="pageCountInput" placeholder="Sayfa Sayısı">
+        <input type="number" id="priceInput" placeholder="Fiyat">
+        <input type="number" id="bookCategoryIdInput" placeholder="Kategori ID">
+        <button id="createBookBtn">Create New Book</button>
+    </div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
