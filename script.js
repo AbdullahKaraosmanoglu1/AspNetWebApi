@@ -1,4 +1,4 @@
-/* GetAllAsync(); EndPoint Request*/
+ï»¿/* GetAllAsync(); EndPoint Request*/
 $(document).ready(function () {
     $('#getAllBooksBtn').click(function () {
         $.ajax({
@@ -6,16 +6,16 @@ $(document).ready(function () {
             method: 'GET',
             success: function (data) {
                 console.log(data);
-                var booksHtml = ''; // Kitapların HTML içeriğini saklayacak değişken
+                var booksHtml = ''; // KitaplarÄ±n HTML iÃ§eriÄŸini saklayacak deÄŸiÅŸken
                 data.data.forEach(function (book) {
                     booksHtml += '<div class="book">';
                     booksHtml += '<p class="name">Name: ' + book.name + '</p>';
                     booksHtml += '<p class="author">Author: ' + book.author + '</p>';
                     booksHtml += '<p class="publisher">Publisher: ' + book.publisher + '</p>';
-                    // Diğer özelliklerde isteğe göre eklenebilir...
+                    // DiÄŸer Ã¶zelliklerde isteÄŸe gÃ¶re eklenebilir...
                     booksHtml += '</div>';
                 });
-                $('#dataContainer').html(booksHtml); // Kitapların HTML içeriğini dataContainer içine ekle
+                $('#dataContainer').html(booksHtml); // KitaplarÄ±n HTML iÃ§eriÄŸini dataContainer iÃ§ine ekle
             },
             error: function (error) {
                 console.error(error);
@@ -27,25 +27,25 @@ $(document).ready(function () {
 /* GetByIdAsync(); EndPoint Request */
 $(document).ready(function () {
     $('#getBookByIdSection').click(function () {
-        // Örnek olarak, alınacak kitabın ID'si #bookIdInput alanından alınacak
+        // Ã–rnek olarak, alÄ±nacak kitabÄ±n ID'si #bookIdInput alanÄ±ndan alÄ±nacak
         var bookId = $('#bookIdInput').val();
 
-        // AJAX çağrısı yapılıyor
+        // AJAX Ã§aÄŸrÄ±sÄ± yapÄ±lÄ±yor
         $.ajax({
-            url: "https://localhost:7238/api/Book/" + bookId, // Book ID'sini URL'ye ekleyerek istek yapılıyor
+            url: "https://localhost:7238/api/Book/" + bookId, // Book ID'sini URL'ye ekleyerek istek yapÄ±lÄ±yor
             method: 'GET',
             success: function (data) {
                 console.log(data);
 
-                // Alınan kitabın bilgileri HTML içeriğine dönüştürülüyor
+                // AlÄ±nan kitabÄ±n bilgileri HTML iÃ§eriÄŸine dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼yor
                 var bookHtml = '<div class="book">';
                 bookHtml += '<p class="name">Name: ' + data.data.name + '</p>';
                 bookHtml += '<p class="author">Author: ' + data.data.author + '</p>';
                 bookHtml += '<p class="publisher">Publisher: ' + data.data.publisher + '</p>';
-                // Diğer özelliklerde isteğe göre eklenebilir...
+                // DiÄŸer Ã¶zelliklerde isteÄŸe gÃ¶re eklenebilir...
                 bookHtml += '</div>';
 
-                // Kitap HTML içeriği dataContainer içine ekleniyor
+                // Kitap HTML iÃ§eriÄŸi dataContainer iÃ§ine ekleniyor
                 $('#dataContainer').html(bookHtml);
             },
             error: function (error) {
@@ -58,9 +58,9 @@ $(document).ready(function () {
 /* CreateBookAsync(); EndPoint Request */
 $(document).ready(function () {   
 
-    // Yeni kitap oluştur butonuna tıklandığında
+    // Yeni kitap oluÅŸtur butonuna tÄ±klandÄ±ÄŸÄ±nda
     $('#createBookBtn').click(function () {
-        // Kullanıcının girdiği bilgileri al
+        // KullanÄ±cÄ±nÄ±n girdiÄŸi bilgileri al
         var name = $('#bookNameInput').val();
         var author = $('#authorInput').val();
         var language = $('#languageInput').val();
@@ -71,7 +71,7 @@ $(document).ready(function () {
         var price = parseFloat($('#priceInput').val());
         var bookCategoryId = parseInt($('#bookCategoryIdInput').val());
 
-        // Yeni kitap nesnesi oluştur
+        // Yeni kitap nesnesi oluÅŸtur
         var newBook = {
             Name: name,
             Author: author,
@@ -85,20 +85,46 @@ $(document).ready(function () {
             BookCategoryId: bookCategoryId
         };
 
-        // AJAX isteği gönder
+        // AJAX isteÄŸi gÃ¶nder
         $.ajax({
             url: "https://localhost:7238/api/Book",
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(newBook),
             success: function (data) {
-                console.log("Yeni kitap oluşturuldu:", data);
-                // Başarılı bir şekilde oluşturulan kitabı göstermek için gerekli kodu buraya ekleyin
+                console.log("Yeni kitap oluÅŸturuldu:", data);
+                // BaÅŸarÄ±lÄ± bir ÅŸekilde oluÅŸturulan kitabÄ± gÃ¶stermek iÃ§in gerekli kodu buraya ekleyin
             },
             error: function (error) {
-                console.error("Yeni kitap oluşturulurken bir hata oluştu:", error);
-                // Hata durumunda kullanıcıya bir hata mesajı göstermek için gerekli kodu buraya ekleyin
+                console.error("Yeni kitap oluÅŸturulurken bir hata oluÅŸtu:", error);
+                // Hata durumunda kullanÄ±cÄ±ya bir hata mesajÄ± gÃ¶stermek iÃ§in gerekli kodu buraya ekleyin
             }
         });
     });
+});
+
+/* DeleteAsync(); EndPoint Request */
+$(document).on("click", ".delete-icon", function () {
+    // Silinecek kitavÄ±n ID'sini al
+    var bookId = $(this).data("book-id");
+
+    // Confirm dialog ile kullanÄ±cÄ±dan silme iÅŸleminin onay al
+    var confirmation = confirm("Bu kitabÄ± silmek istediÃ°inize emin misiniz?");
+
+    // KullanÄ±cÄ± onaylarsa
+    if (confirmation) {
+        // AJAX isteÃ°i gÃ¶ndererek kitabÄ± sil
+        $.ajax({
+            url: "https://localhost:7238/api/Book/" + bookId,
+            type: "DELETE",
+            success: function (response) {
+                // BaÅŸarÄ±lÄ± yanÄ±t aldÄ±Ã°Ä±mÄ±zda veriyi yeniden yÃ¼kle
+                $("#getData").click();
+            },
+            error: function (xhr, status, error) {
+                // Hata durumunda konsola hata mesajÄ±nÄ± yazdÄ±r
+                console.error(xhr.responseText);
+            }
+        });
+    }
 });
