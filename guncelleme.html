@@ -14,7 +14,7 @@
     <div id="updateForm">
         <h2>Kitap Bilgilerini Güncelle</h2>
         <label for="id">Id:</label>
-        <input type="text" id="id"><br>
+        <input type="text" id="id" readonly><br>
 
         <label for="updatedName">Name:</label>
         <input type="text" id="updatedName"><br>
@@ -41,15 +41,20 @@
         <label for="updatedUpdatedDate">Updated Date:</label>
         <input type="text" id="updatedUpdatedDate"><br>
         <label for="updatedIsActive">Is Active:</label>
-        <input type="text" id="updatedIsActive"><br>
+        <select id="updatedIsActive">
+            <option value="true">True</option>
+            <option value="false">False</option>
+            <option value="">Null</option>
+        </select><br>
+
         <label for="updatedIsDeleted">Is Deleted:</label>
-        <input type="text" id="updatedIsDeleted"><br>
+        <input type="text" id="updatedIsDeleted" readonly><br>
         <button id="updateButton">Güncelle</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="update.js"></script>
     <script src="script.js"></script>
-   
+
 </body>
 </html>
