@@ -1,12 +1,12 @@
-﻿/*body {
+﻿body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-}*/
+    margin: 10vh;
+}
 
-/*#dataContainer {
+#dataContainer {
     margin-top: 20px;
     text-align: center;
 }
@@ -17,7 +17,7 @@
     margin-bottom: 10px;
 }
 
-h1 {
+/*h1 {
     text-align: center;
     position: absolute;
     top: 0;

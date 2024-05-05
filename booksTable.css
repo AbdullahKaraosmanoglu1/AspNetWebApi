@@ -11,6 +11,7 @@ h1 {
     position: fixed;
     top: 0;
     left: 50%;
+    bottom:auto;
     transform: translateX(-50%);
     background-color: white; /* İsteğe bağlı: Arkaplanı beyaz yapar */
     padding: 10px 20px; /* İsteğe bağlı: Başlığın etrafına biraz boşluk ekler */
@@ -88,3 +89,21 @@ h1 {
     #button:hover {
         background-color: #45a049;
     }
+
+#getByIdSection {
+    border: 2px solid #ccc; /* Çerçeve rengi */
+    padding: 20px; /* İçerik ile çerçeve arasındaki boşluk */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    max-width: 500px; /* Maksimum genişlik */
+    margin: -200px auto 0; /* 100px yukarı kaydırır */
+}
+
+#createBookForm {
+    border: 2px solid #ccc; /* Çerçeve rengi */
+    padding: 20px; /* İçerik ile çerçeve arasındaki boşluk */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    max-width: 500px; /* Maksimum genişlik */
+    margin: -200px auto 0; /* 100px yukarı kaydırır */
+}
+
+

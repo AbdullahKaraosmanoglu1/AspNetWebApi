@@ -21,20 +21,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookAplication.jquery", "Bo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS", "CSS", "{6D89EB08-A702-4D45-9B98-FBB29AF9AE85}"
 	ProjectSection(SolutionItems) = preProject
-		main.css = main.css
 		booksTable.css = booksTable.css
+		main.css = main.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3C75060D-BC26-431F-B40A-0272A603CF8D}"
 	ProjectSection(SolutionItems) = preProject
+		create.js = create.js
+		delete.js = delete.js
 		script.js = script.js
 		update.js = update.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{78793679-8EA1-4EFB-B7B7-9910CB2B42C7}"
 	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
 		booksTable.html = booksTable.html
+		create.html = create.html
+		GetById.html = GetById.html
+		index.html = index.html
 		updateBook.html = updateBook.html
 	EndProjectSection
 EndProject
