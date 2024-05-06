@@ -30,3 +30,19 @@
 2024-05-04 16:49:32.8879 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
 2024-05-04 16:49:32.8879 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\akogl\source\repos\Training\Web.Api\AspNetWebApi\BookApplication\bin\Debug\net8.0\NLog.config
 2024-05-04 16:49:32.9160 Info Configuration initialized.
+2024-05-06 11:49:27.5881 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-05-06 11:49:27.6393 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-05-06 11:49:27.6561 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\akogl\source\repos\Training\Web.Api\AspNetWebApi\BookApplication\bin\Debug\net8.0\NLog.config
+2024-05-06 11:49:27.6740 Info Configuration initialized.
+2024-05-06 12:02:37.5798 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-05-06 12:02:37.5993 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-05-06 12:02:37.6112 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\akogl\source\repos\Training\Web.Api\AspNetWebApi\BookApplication\bin\Debug\net8.0\NLog.config
+2024-05-06 12:02:37.6240 Info Configuration initialized.
+2024-05-06 12:08:22.5110 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-05-06 12:08:22.5325 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-05-06 12:08:22.5476 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\akogl\source\repos\Training\Web.Api\AspNetWebApi\BookApplication\bin\Debug\net8.0\NLog.config
+2024-05-06 12:08:22.5643 Info Configuration initialized.
+2024-05-06 12:20:46.9675 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-05-06 12:20:46.9876 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-05-06 12:20:46.9995 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\akogl\source\repos\Training\Web.Api\AspNetWebApi\BookApplication\bin\Debug\net8.0\NLog.config
+2024-05-06 12:20:47.0128 Info Configuration initialized.

@@ -1,19 +1,27 @@
-﻿using BookApplication.Data.Entity;
+﻿using BookApplication.Data.BookApplicationDbContext;
+using BookApplication.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Data.Repository.UserRepository
 {
     public class UserRepository : IUserRepository
     {
         private readonly IGenericRepository<User> _userRepository;
+        private readonly BookAppDataBaseContext _bookAppDataBaseContext;
 
-        public UserRepository(IGenericRepository<User> userRepository)
+        public UserRepository(IGenericRepository<User> userRepository, BookAppDataBaseContext bookAppDataBaseContext)
         {
             _userRepository = userRepository;
+            _bookAppDataBaseContext = bookAppDataBaseContext;
         }
 
         public async Task<User> CreateAsync(User entity)
         {
-            return await _userRepository.CreateAsync(entity);
+            var test = await _bookAppDataBaseContext.Users.AddAsync(entity);
+            var test1 = _bookAppDataBaseContext.Users.Include(x => x.Role);
+            entity.IsDeleted = false;
+
+            return entity;
         }
 
         public async Task<bool> DeleteAsync(int id)

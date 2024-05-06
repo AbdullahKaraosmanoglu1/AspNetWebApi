@@ -2,6 +2,7 @@
 using BookApplication.Services.Service.BookServices;
 using BookApplication.Services.Service.UserBookServices;
 using BookApplication.Services.Service.UserServices;
+using BookApplication.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BookApplication.Services.Extensions
@@ -14,6 +15,7 @@ namespace BookApplication.Services.Extensions
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserBookService, UserBookService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

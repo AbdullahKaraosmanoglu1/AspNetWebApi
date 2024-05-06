@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
 using BookApplication.Services.Service.UserServices;
+using BookApplication.Services.Services;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,13 @@ namespace BookApplication.WebApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IAuthService _authService;
         private readonly IMapper _mapper;
 
-        public UserController(IUserService userService, IMapper mapper)
+        public UserController(IUserService userService, IAuthService authService, IMapper mapper)
         {
             _userService = userService;
+            _authService = authService;
             _mapper = mapper;
         }
 
@@ -56,6 +59,14 @@ namespace BookApplication.WebApi.Controllers
             var userModel = _mapper.Map<User>(createUserModel);
 
             var createUser = await _userService.CreateAsync(userModel);
+
+            var userPasswordHash = await _authService.PasswordHashAsync(createUserModel.Password);
+
+            userModel.Password = userPasswordHash;
+
+            var token = await _authService.GenerateJwtTokenAsync(userModel.Email, createUser.Role.RoleName);
+            userModel.AccessToken = token;
+            userModel.AccessTokenCreatedDate = DateTime.Now;
 
             await _userService.SaveAsync();
 
