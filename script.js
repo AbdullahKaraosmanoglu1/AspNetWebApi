@@ -5,9 +5,10 @@ $(document).ready(function () {
         $.ajax({
             url: "https://localhost:7238/api/Book",
             method: 'GET',
+            headers: { "Authorization":'Bearer ' + localStorage.getItem('token') },
             success: function (data) {
                 console.log(data);
-                var tableContent = ''; // Tablo içeriðini saklayacak deðiþken
+                var tableContent = ''; // Tablo içeriğini saklayacak değişken
                 data.data.forEach(function (book) {
                     tableContent += '<tr>';
                     tableContent += '<td>' + book.id + '</td>';
