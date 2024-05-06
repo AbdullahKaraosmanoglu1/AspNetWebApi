@@ -3,6 +3,7 @@ using BookApplication.Data.Entity;
 using BookApplication.Services.Service.BookServices;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.BookModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApplication.WebApi.Controllers
@@ -20,6 +21,7 @@ namespace BookApplication.WebApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ResponseModel> GetAllAsync()
         {
