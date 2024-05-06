@@ -3,7 +3,7 @@ using BookApplication.Services.Service.BookServices;
 using BookApplication.Services.Service.RoleService;
 using BookApplication.Services.Service.UserBookServices;
 using BookApplication.Services.Service.UserServices;
-using BookApplication.Services.Services;
+using BookApplication.Services.Services.AuthService;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BookApplication.Services.Extensions

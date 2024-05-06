@@ -2,7 +2,7 @@
 using BookApplication.Data.Entity;
 using BookApplication.Services.Service.RoleService;
 using BookApplication.Services.Service.UserServices;
-using BookApplication.Services.Services;
+using BookApplication.Services.Services.AuthService;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.Mvc;
