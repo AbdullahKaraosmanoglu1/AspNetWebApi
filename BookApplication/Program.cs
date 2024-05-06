@@ -1,7 +1,6 @@
 using BookApplication.Data.Extensions;
 using BookApplication.Services.Extensions;
 using BookApplication.WebApi.Extensions;
-using Microsoft.AspNetCore.Builder;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +15,8 @@ builder.Services.AddControllers()
 
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddSwaggerGen();/*Added*/
+
 /* sqlConnection Extension */
 builder.Services.RegisterSqlConnect(builder.Configuration);
 /* Configure Repository Extension */
@@ -28,11 +29,12 @@ builder.Services.AutoMapperExtension();
 builder.Services.ConfigureNLogServiceExtension();
 /*Configure JWT Token Extension*/
 builder.Services.ConfigureJwtBearerTokenExtension();
+builder.Services.AddJwtAuthenticationExtension(builder.Configuration);
 /*Configure CORS-Policy Extension*/
-// CORS politikasýný ekle
 var allowOrigin = "AllowOrigin";
 builder.Services.AddCorsPolicyExtension(allowOrigin);
 
+builder.Services.AddAuthorization();/*Added*/
 
 var app = builder.Build();
 
@@ -41,12 +43,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-// CORS politikasýný uygula
-app.UseCors(allowOrigin);
+
+app.UseCors(allowOrigin);/*Added*/
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();/*Added*/
 
 app.MapControllers();
 

@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using BookApplication.Services.NLog;
 using BookApplication.WebApi.AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
+
 
 namespace BookApplication.WebApi.Extensions
 {
@@ -42,6 +46,26 @@ namespace BookApplication.WebApi.Extensions
             return corsPolicyProvider.GetPolicyAsync(null, policyName).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        public static void AddJwtAuthenticationExtension(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            RequireExpirationTime = true,
+                            ValidateIssuerSigningKey = true,
+                            ClockSkew = TimeSpan.Zero,
+                            ValidIssuer = configuration["JWT:Issuer"],
+                            ValidAudience = configuration["JWT:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"] ?? string.Empty))
+                        };
+                    });
+        }
+
         public static void ConfigureJwtBearerTokenExtension(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
@@ -68,6 +92,16 @@ namespace BookApplication.WebApi.Extensions
                         Array.Empty<string>()
                     }
                 });
+            });
+        }
+
+        public static void AddCustomAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Üye", policy => policy.RequireRole("Üye"));
+                options.AddPolicy("Satıcı", policy => policy.RequireRole("Satıcı"));
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
         }
     }

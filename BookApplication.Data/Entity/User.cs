@@ -19,6 +19,7 @@ namespace BookApplication.Data.Entity
         [StringLength(100)]
         public string? ImagePath { get; set; }
         public decimal MoneyAmount { get; set; }
+        public int RoleId { get; set; }
 
         public ICollection<UserBook> UserBooks { get; set; }
 
