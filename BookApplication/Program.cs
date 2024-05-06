@@ -14,14 +14,8 @@ builder.Services.AddControllers()
                 .AddNewtonsoftJson();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-var allowOrigin = "AllowOrigin";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(allowOrigin, builder =>
-    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-});
+builder.Services.AddSwaggerGen();/*Added*/
 
 /* sqlConnection Extension */
 builder.Services.RegisterSqlConnect(builder.Configuration);
@@ -32,8 +26,15 @@ builder.Services.RegisterServices();
 /* Configure AutoMapper Extension */
 builder.Services.AutoMapperExtension();
 /* Configure NLog Extension */
-builder.Services.ConfigureNLogService();
+builder.Services.ConfigureNLogServiceExtension();
+/*Configure JWT Token Extension*/
+builder.Services.ConfigureJwtBearerTokenExtension();
+builder.Services.AddJwtAuthenticationExtension(builder.Configuration);
+/*Configure CORS-Policy Extension*/
+var allowOrigin = "AllowOrigin";
+builder.Services.AddCorsPolicyExtension(allowOrigin);
 
+builder.Services.AddAuthorization();/*Added*/
 
 var app = builder.Build();
 
@@ -42,11 +43,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(allowOrigin);
+
+app.UseCors(allowOrigin);/*Added*/
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();/*Added*/
 
 app.MapControllers();
 
