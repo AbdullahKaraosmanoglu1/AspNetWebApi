@@ -31,7 +31,14 @@
 
 
        
-9- ) Global Hata Yönetimi (Global Error Handling)
+## 9- ) Global Hata Yönetimi (Global Error Handling)
+
+       << Error Model >>
+       << Error Details (Serialize) >>
+       << Configure Exception Handler >>
+       << UseExceptionHandler >>
+       << Improve Configure Exception Handler >>
+
 
 10-) AutoMapper
 
