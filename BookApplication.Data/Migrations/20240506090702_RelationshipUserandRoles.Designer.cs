@@ -4,6 +4,7 @@ using BookApplication.Data.BookApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApplication.Data.Migrations
 {
     [DbContext(typeof(BookAppDataBaseContext))]
-    partial class BookAppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240506090702_RelationshipUserandRoles")]
+    partial class RelationshipUserandRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

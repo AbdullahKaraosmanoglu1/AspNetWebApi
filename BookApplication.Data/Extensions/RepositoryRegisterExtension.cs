@@ -2,6 +2,7 @@
 using BookApplication.Data.Repository;
 using BookApplication.Data.Repository.BookCategoryRepository;
 using BookApplication.Data.Repository.BookRepository;
+using BookApplication.Data.Repository.RoleRepository;
 using BookApplication.Data.Repository.UserBookRepository;
 using BookApplication.Data.Repository.UserRepository;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace BookApplication.Data.Extensions
             services.AddScoped<IBookCategoryRepository, BookCategoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserBookRepository, UserBookRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             return services;
         }
