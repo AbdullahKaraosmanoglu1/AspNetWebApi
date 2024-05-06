@@ -11,6 +11,7 @@ namespace BookApplication.Data.BookApplicationDbContext
         public DbSet<BookCategory> BookCategories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserBook> UserBooks { get; set; }
+        public DbSet<Role> Roles { get; set; }
    
     }
 }
