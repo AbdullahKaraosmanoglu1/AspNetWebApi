@@ -21,6 +21,7 @@ namespace BookApplication.Data.Repository
             await _table.AddAsync(entity);
             entity.IsDeleted = false;
 
+
             return entity;
         }
 

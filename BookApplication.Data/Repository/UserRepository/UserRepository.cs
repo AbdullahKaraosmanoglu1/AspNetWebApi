@@ -7,21 +7,14 @@ namespace BookApplication.Data.Repository.UserRepository
     public class UserRepository : IUserRepository
     {
         private readonly IGenericRepository<User> _userRepository;
-        private readonly BookAppDataBaseContext _bookAppDataBaseContext;
-
-        public UserRepository(IGenericRepository<User> userRepository, BookAppDataBaseContext bookAppDataBaseContext)
+        public UserRepository(IGenericRepository<User> userRepository)
         {
             _userRepository = userRepository;
-            _bookAppDataBaseContext = bookAppDataBaseContext;
         }
 
         public async Task<User> CreateAsync(User entity)
         {
-            var test = await _bookAppDataBaseContext.Users.AddAsync(entity);
-            var test1 = _bookAppDataBaseContext.Users.Include(x => x.Role);
-            entity.IsDeleted = false;
-
-            return entity;
+            return await _userRepository.CreateAsync(entity);
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -38,6 +31,7 @@ namespace BookApplication.Data.Repository.UserRepository
         {
             return await _userRepository.GetByIdAsync(id);
         }
+
 
         public async Task SaveAsync()
         {

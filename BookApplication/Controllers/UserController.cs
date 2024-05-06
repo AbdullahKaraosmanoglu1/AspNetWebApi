@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Services.Service.RoleService;
 using BookApplication.Services.Service.UserServices;
 using BookApplication.Services.Services;
 using BookApplication.WebApi.Models;
@@ -15,12 +16,14 @@ namespace BookApplication.WebApi.Controllers
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
         private readonly IMapper _mapper;
+        private readonly IRoleService _roleService;
 
-        public UserController(IUserService userService, IAuthService authService, IMapper mapper)
+        public UserController(IUserService userService, IAuthService authService, IMapper mapper, IRoleService roleService)
         {
             _userService = userService;
             _authService = authService;
             _mapper = mapper;
+            _roleService = roleService;
         }
 
         [HttpGet]
@@ -58,13 +61,12 @@ namespace BookApplication.WebApi.Controllers
         {
             var userModel = _mapper.Map<User>(createUserModel);
 
+            var userPasswordHash = await _authService.PasswordHashAsync(createUserModel.Password);
+            userModel.Password = userPasswordHash;
             var createUser = await _userService.CreateAsync(userModel);
 
-            var userPasswordHash = await _authService.PasswordHashAsync(createUserModel.Password);
-
-            userModel.Password = userPasswordHash;
-
-            var token = await _authService.GenerateJwtTokenAsync(userModel.Email, createUser.Role.RoleName);
+            var userRole = await _roleService.GetByIdAsync(createUserModel.RoleId);
+            var token = await _authService.GenerateJwtTokenAsync(userModel.Email, userRole.RoleName);
             userModel.AccessToken = token;
             userModel.AccessTokenCreatedDate = DateTime.Now;
 
