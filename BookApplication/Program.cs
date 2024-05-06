@@ -1,6 +1,7 @@
 using BookApplication.Data.Extensions;
 using BookApplication.Services.Extensions;
 using BookApplication.WebApi.Extensions;
+using Microsoft.AspNetCore.Builder;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,14 +15,6 @@ builder.Services.AddControllers()
                 .AddNewtonsoftJson();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var allowOrigin = "AllowOrigin";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(allowOrigin, builder =>
-    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-});
 
 /* sqlConnection Extension */
 builder.Services.RegisterSqlConnect(builder.Configuration);
@@ -32,7 +25,13 @@ builder.Services.RegisterServices();
 /* Configure AutoMapper Extension */
 builder.Services.AutoMapperExtension();
 /* Configure NLog Extension */
-builder.Services.ConfigureNLogService();
+builder.Services.ConfigureNLogServiceExtension();
+/*Configure JWT Token Extension*/
+builder.Services.ConfigureJwtBearerTokenExtension();
+/*Configure CORS-Policy Extension*/
+// CORS politikasýný ekle
+var allowOrigin = "AllowOrigin";
+builder.Services.AddCorsPolicyExtension(allowOrigin);
 
 
 var app = builder.Build();
@@ -42,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// CORS politikasýný uygula
 app.UseCors(allowOrigin);
 
 app.UseHttpsRedirection();
