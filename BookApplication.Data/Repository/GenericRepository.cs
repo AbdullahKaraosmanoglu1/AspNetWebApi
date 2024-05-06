@@ -27,16 +27,14 @@ namespace BookApplication.Data.Repository
 
         public async Task<bool> DeleteAsync(int id)
         {
-            T entity = await _table.Where(x => x.Id == id && x.IsDeleted != true).FirstOrDefaultAsync();
+            T entity = await _table.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (entity == null)
+            if (entity != null)
             {
-                return false;
+                entity.IsDeleted = true;
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
             }
-
-            entity.IsDeleted = true;
-            _dbContext.Entry(entity).State = EntityState.Modified;
-
             return true;
         }
 
@@ -47,7 +45,7 @@ namespace BookApplication.Data.Repository
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _table.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
+            return await _table.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
         }
 
         public async Task SaveAsync()
