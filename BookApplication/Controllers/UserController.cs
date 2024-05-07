@@ -33,10 +33,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userModels = _mapper.Map<IEnumerable<User>>(users);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Kullanıcılar Getirildi.";
-            response.Data = userModels;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Kullanıcılar Getirildi.",
+                Data = userModels
+            };
 
             return response;
         }
@@ -48,10 +50,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userModel = _mapper.Map<UserModel>(user);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "İstenilen Kullanıcı Getirildi.";
-            response.Data = userModel;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "İstenilen Kullanıcı Getirildi.",
+                Data = userModel
+            };
 
             return response;
         }
@@ -74,10 +78,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userModelMap = _mapper.Map<UserModel>(createUser);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Kullanıcı Başarılı Bir Şekilde Oluşturuldu.";
-            response.Data = userModelMap;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Kullanıcı Başarılı Bir Şekilde Oluşturuldu.",
+                Data = userModelMap
+            };
 
             return response;
         }
@@ -91,9 +97,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _userService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Kullanıcı Başarılı Bir Şekilde Güncellendi.";
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Kullanıcı Başarılı Bir Şekilde Güncellendi."
+            };
 
             return response;
         }
@@ -105,10 +113,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _userService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Kullanıcı Başarılı Bir Şekilde Silindi";
-
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Kullanıcı Başarılı Bir Şekilde Silindi"
+            };
 
             return response;
         }

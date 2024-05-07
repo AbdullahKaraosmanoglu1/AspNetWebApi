@@ -26,15 +26,16 @@ namespace BookApplication.WebApi.Controllers
         [HttpPost("UserLogin")]
         public async Task<ResponseModel> UserLoginAsync([FromBody] LoginModel loginModel)
         {
-            var response = new ResponseModel();
-
             var userMap = _mapper.Map<User>(loginModel);
 
             var user = await _authService.UserLoginAsync(userMap);
 
-            response.Code = "200";
-            response.Message = "Üye Girişi Başarılı.";
-            response.Data = user.AccessToken;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Üye Girişi Başarılı.",
+                Data = user.AccessToken
+            };
 
             return response;
         }

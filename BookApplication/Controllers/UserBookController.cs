@@ -29,10 +29,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userBookModels = _mapper.Map<IEnumerable<UserBookModel>>(userBooks);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Sahipli Kitaplar Getirildi.";
-            response.Data = userBookModels;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Sahipli Kitaplar Getirildi.",
+                Data = userBookModels
+            };
 
             return response;
         }
@@ -44,10 +46,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userBookModel = _mapper.Map<UserBookModel>(userBook);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "İstenilen Sahipli Kitap Getirildi.";
-            response.Data = userBookModel;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "İstenilen Sahipli Kitap Getirildi.",
+                Data = userBookModel
+            };
 
             return response;
         }
@@ -63,10 +67,12 @@ namespace BookApplication.WebApi.Controllers
 
             var userBookModelMap = _mapper.Map<UserBookModel>(createUserBook);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Sahipli Kitap Başarılı Bir Şekilde Oluşturuldu.";
-            response.Data = userBookModelMap;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Sahipli Kitap Başarılı Bir Şekilde Oluşturuldu.",
+                Data = userBookModelMap
+            };
 
             return response;
         }
@@ -80,9 +86,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _userBookService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Sahipli Kitap Başarılı Bir Şekilde Güncellendi.";
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Sahipli Kitap Başarılı Bir Şekilde Güncellendi."
+            };
 
             return response;
         }
@@ -94,10 +102,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _userBookService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Sahipli Kitap Başarılı Bir Şekilde Silindi";
-
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Sahipli Kitap Başarılı Bir Şekilde Silindi"
+            };
 
             return response;
         }
