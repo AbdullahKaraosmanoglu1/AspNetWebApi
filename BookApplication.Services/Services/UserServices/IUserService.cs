@@ -10,5 +10,7 @@ namespace BookApplication.Services.Service.UserServices
         Task<User> UpdateAsync(User entity);
         Task<bool> DeleteAsync(int id);
         Task SaveAsync();
+
+        Task<User> GetByTokenAsync(string token);
     }
 }

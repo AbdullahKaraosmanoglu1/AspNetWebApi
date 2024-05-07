@@ -20,35 +20,35 @@ namespace BookApplication.Services.Service.RoleService
         public async Task<Role> CreateAsync(Role entity)
         {
 
-            return await _RoleRepository.CreateAsync(entity);
+            return await (_RoleRepository.CreateAsync(entity));
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
             string message = $"Role wanted to delete account ID, information:{id}";
-            await _loggerService.LogWarning(message);
+            await (_loggerService.LogWarning(message));
 
             return await (_RoleRepository.DeleteAsync(id));
         }
 
         public async Task<IEnumerable<Role>> GetAllAsync()
         {
-            return await _RoleRepository.GetAllAsync();
+            return await (_RoleRepository.GetAllAsync());
         }
 
         public async Task<Role> GetByIdAsync(int id)
         {
-            return await _RoleRepository.GetByIdAsync(id);
+            return await (_RoleRepository.GetByIdAsync(id));
         }
 
         public async Task SaveAsync()
         {
-            await _RoleRepository.SaveAsync();
+            await (_RoleRepository.SaveAsync());
         }
 
         public async Task<Role> UpdateAsync(Role entity)
         {
-            return await _RoleRepository.UpdateAsync(entity);
+            return await (_RoleRepository.UpdateAsync(entity));
         }
     }
 }

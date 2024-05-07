@@ -26,32 +26,32 @@ namespace BookApplication.Services.Service.BookCategoryServices
             //entity.ImagePath = slugifiedImagePath;
 
             string message = $"New BookCategory created, information:{entity.Name}";
-            await _loggerService.LogInfo(message);
+            await (_loggerService.LogInfo(message));
 
-            return await _bookCategoryRepository.CreateAsync(entity);
+            return await (_bookCategoryRepository.CreateAsync(entity));
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
             string message = $"Adnmin delete BookCategory, ID information:{id}";
-            await _loggerService.LogWarning(message);
+            await (_loggerService.LogWarning(message));
 
             return await (_bookCategoryRepository.DeleteAsync(id));
         }
 
         public async Task<IEnumerable<BookCategory>> GetAllAsync()
         {
-            return await _bookCategoryRepository.GetAllAsync();
+            return await (_bookCategoryRepository.GetAllAsync());
         }
 
         public async Task<BookCategory> GetByIdAsync(int id)
         {
-            return await _bookCategoryRepository.GetByIdAsync(id);
+            return await (_bookCategoryRepository.GetByIdAsync(id));
         }
 
         public async Task SaveAsync()
         {
-            await _bookCategoryRepository.SaveAsync();
+            await (_bookCategoryRepository.SaveAsync());
         }
 
         public async Task<BookCategory> UpdateAsync(BookCategory entity)
@@ -63,7 +63,7 @@ namespace BookApplication.Services.Service.BookCategoryServices
             //var slugifiedImagePath = entity.ImagePath.GenerateSlugForImages();
             //entity.ImagePath = slugifiedImagePath;
 
-            return await _bookCategoryRepository.UpdateAsync(entity);
+            return await (_bookCategoryRepository.UpdateAsync(entity));
         }
     }
 }

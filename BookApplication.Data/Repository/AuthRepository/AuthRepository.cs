@@ -48,7 +48,7 @@ namespace BookApplication.Data.Repository.AuthRepository
 
         public async Task<User> UserLoginAsync(User user)
         {
-            return await _bookAppDataBaseContext.Users.Include(x => x.Role).FirstOrDefaultAsync(x => x.Email == user.Email && x.Password == user.Password && x.IsDeleted == false && x.IsActive != false);
+            return await (_bookAppDataBaseContext.Users.Include(x => x.Role).FirstOrDefaultAsync(x => x.Email == user.Email && x.Password == user.Password && x.IsDeleted == false && x.IsActive != false));
         }
     }
 }

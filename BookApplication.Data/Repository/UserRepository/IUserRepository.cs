@@ -4,6 +4,6 @@ namespace BookApplication.Data.Repository.UserRepository
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        public Task<User> GetByToken(string token);
+        public Task<User> GetByTokenAsync(string token);
     }
 }
