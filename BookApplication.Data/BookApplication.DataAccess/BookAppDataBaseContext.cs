@@ -12,6 +12,7 @@ namespace BookApplication.Data.BookApplicationDbContext
         public DbSet<User> Users { get; set; }
         public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Admin> Admins { get; set; }
    
     }
 }

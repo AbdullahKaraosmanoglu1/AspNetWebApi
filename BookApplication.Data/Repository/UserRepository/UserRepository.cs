@@ -7,9 +7,11 @@ namespace BookApplication.Data.Repository.UserRepository
     public class UserRepository : IUserRepository
     {
         private readonly IGenericRepository<User> _userRepository;
-        public UserRepository(IGenericRepository<User> userRepository)
+        private readonly BookAppDataBaseContext _bookAppDataBaseContext;
+        public UserRepository(IGenericRepository<User> userRepository, BookAppDataBaseContext bookAppDataBaseContext)
         {
             _userRepository = userRepository;
+            _bookAppDataBaseContext = bookAppDataBaseContext;
         }
 
         public async Task<User> CreateAsync(User entity)
@@ -32,6 +34,10 @@ namespace BookApplication.Data.Repository.UserRepository
             return await _userRepository.GetByIdAsync(id);
         }
 
+        public async Task<User> GetByToken(string token)
+        {
+            return await _bookAppDataBaseContext.Users.FirstOrDefaultAsync(x => x.AccessToken == token && x.IsDeleted == false);
+        }
 
         public async Task SaveAsync()
         {
