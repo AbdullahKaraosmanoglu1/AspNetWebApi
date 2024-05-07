@@ -36,7 +36,7 @@ namespace BookApplication.Data.Repository.AdminRepository
             return await _adminRepository.GetByIdAsync(id);
         }
 
-        public async Task<Admin> GetByToken(string token)
+        public async Task<Admin> GetByTokenAsync(string token)
         {
             return await _bookAppDataBaseContext.Admins.FirstOrDefaultAsync(x => x.AccessToken == token && x.IsDeleted == false);
         }

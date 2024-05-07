@@ -34,7 +34,7 @@ namespace BookApplication.Data.Repository.UserRepository
             return await _userRepository.GetByIdAsync(id);
         }
 
-        public async Task<User> GetByToken(string token)
+        public async Task<User> GetByTokenAsync(string token)
         {
             return await _bookAppDataBaseContext.Users.FirstOrDefaultAsync(x => x.AccessToken == token && x.IsDeleted == false);
         }

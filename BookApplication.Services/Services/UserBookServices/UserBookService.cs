@@ -18,37 +18,37 @@ namespace BookApplication.Services.Service.UserBookServices
         public async Task<UserBook> CreateAsync(UserBook entity)
         {
             string message = $"User claimed Book, information: UserId = {entity.UserId} and BookId = {entity.BookId} ";
-            await _loggerService.LogInfo(message);
+            await (_loggerService.LogInfo(message));
 
-            return await _userBookRepository.CreateAsync(entity);
+            return await (_userBookRepository.CreateAsync(entity));
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
             string message = $"Adnmin delete UserBook, ID information:{id}";
-            await _loggerService.LogWarning(message);
+            await (_loggerService.LogWarning(message));
 
             return await (_userBookRepository.DeleteAsync(id));
         }
 
         public async Task<IEnumerable<UserBook>> GetAllAsync()
         {
-            return await _userBookRepository.GetAllAsync();
+            return await (_userBookRepository.GetAllAsync());
         }
 
         public async Task<UserBook> GetByIdAsync(int id)
         {
-            return await _userBookRepository.GetByIdAsync(id);
+            return await (_userBookRepository.GetByIdAsync(id));
         }
 
         public async Task SaveAsync()
         {
-            await _userBookRepository.SaveAsync();
+            await (_userBookRepository.SaveAsync());
         }
 
         public async Task<UserBook> UpdateAsync(UserBook entity)
         {
-            return await _userBookRepository.UpdateAsync(entity);
+            return await (_userBookRepository.UpdateAsync(entity));
         }
     }
 }
