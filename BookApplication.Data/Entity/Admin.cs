@@ -23,5 +23,7 @@ namespace BookApplication.Data.Entity
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenCreatedDate { get; set; }
         public DateTime? AccessTokenCreatedDate { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
     }
 }
