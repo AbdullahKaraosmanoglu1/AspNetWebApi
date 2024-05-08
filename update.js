@@ -1,29 +1,27 @@
+function fetchBookDataAndUpdate(bookId) {
+    // Fetch book data from the API
+    $.ajax({
+        url: "https://localhost:7238/api/Book/" + bookId,
+        method: 'GET',
+        success: function (data) {
+            // Verileri Local Storage'a kaydet
+            localStorage.setItem('bookData', JSON.stringify(data.data));
+            // Diðer sayfaya yönlendir
+            window.location.href = 'updateBook.html';
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
+}
 
-
-/* UpdateBook EndPoint Request*/
 $(document).ready(function () {
     // Güncelleme butonuna týklandýðýnda
     $(document).on('click', '.edit-icon', function () {
         var bookId = $(this).data('book-id');
-
-        // Fetch book data from the API
-        $.ajax({
-            url: "https://localhost:7238/api/Book/" + bookId,
-            method: 'GET',
-            success: function (data) {
-                // Verileri Local Storage'a kaydet
-                localStorage.setItem('bookData', JSON.stringify(data.data));
-                // Diðer sayfaya yönlendir
-                window.location.href = 'updateBook.html';
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+        fetchBookDataAndUpdate(bookId); // Yeni fonksiyonu çaðýr
     });
-});
 
-$(document).ready(function () {
     // Local Storage'dan verileri al
     var bookData = JSON.parse(localStorage.getItem('bookData'));
     if (bookData) {
@@ -87,6 +85,3 @@ $('#updateButton').click(function (event) {
         }
     });
 });
-
-
-
