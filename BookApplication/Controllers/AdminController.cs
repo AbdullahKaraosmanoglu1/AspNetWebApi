@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Services.Service.RoleService;
 using BookApplication.Services.Services.AdminService;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.AdminModels;
+using BookApplication.WebApi.Models.RoleModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApplication.WebApi.Controllers
@@ -12,12 +14,14 @@ namespace BookApplication.WebApi.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
+        private readonly IRoleService _roleService;
         private readonly IMapper _mapper;
 
-        public AdminController(IAdminService adminService, IMapper mapper)
+        public AdminController(IAdminService adminService, IMapper mapper, IRoleService roleService)
         {
             _adminService = adminService;
             _mapper = mapper;
+            _roleService = roleService;
         }
 
         [HttpGet]
@@ -32,6 +36,23 @@ namespace BookApplication.WebApi.Controllers
                 Code = "200",
                 Message = "Admin Kullanıcıları getirildi.",
                 Data = adminMap
+            };
+
+            return response;
+        }
+
+        [HttpGet("GetAllRoles")]
+        public async Task<ResponseModel> GetAllRolesAsync()
+        {
+            var roles = await _roleService.GetAllAsync();
+
+            var rolesMap = _mapper.Map<IEnumerable<RoleModel>>(roles);
+
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Roller getirildi.",
+                Data = rolesMap
             };
 
             return response;
