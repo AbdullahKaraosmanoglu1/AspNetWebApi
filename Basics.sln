@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3C75
 		create.js = create.js
 		delete.js = delete.js
 		login.js = login.js
+		register.js = register.js
 		script.js = script.js
 		update.js = update.js
 	EndProjectSection
@@ -41,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{78793679
 		GetById.html = GetById.html
 		index.html = index.html
 		Login.html = Login.html
+		register.html = register.html
 		updateBook.html = updateBook.html
 	EndProjectSection
 EndProject

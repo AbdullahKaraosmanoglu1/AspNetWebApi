@@ -3,6 +3,7 @@ using BookApplication.Data.Entity;
 using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
 using BookApplication.WebApi.Models.LoginModels;
+using BookApplication.WebApi.Models.RoleModels;
 using BookApplication.WebApi.Models.UserBookModels;
 using BookApplication.WebApi.Models.UserModels;
 
@@ -36,6 +37,13 @@ namespace BookApplication.WebApi.AutoMapper
             CreateMap<CreateUserModel, User>().ReverseMap();
             CreateMap<UpdateUserModel, User>().ReverseMap();
             CreateMap<LoginModel, User>().ReverseMap();
+            #endregion
+
+            #region ROLE
+            CreateMap<RoleModel, Role>().ReverseMap();
+            CreateMap<RoleModel, CreateUserModel>()
+                .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
             #endregion
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Repository;
+using BookApplication.Data.Repository.AdminRepository;
 using BookApplication.Data.Repository.AuthRepository;
 using BookApplication.Data.Repository.BookCategoryRepository;
 using BookApplication.Data.Repository.BookRepository;
@@ -30,6 +31,7 @@ namespace BookApplication.Data.Extensions
             services.AddScoped<IUserBookRepository, UserBookRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
 
             return services;
         }
