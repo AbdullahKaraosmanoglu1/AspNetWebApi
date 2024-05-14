@@ -56,6 +56,23 @@ namespace BookApplication.WebApi.Controllers
             return response;
         }
 
+        [HttpGet("Category/{categoryId:int}")]
+        public async Task<ResponseModel> GetBooksByCategoryIdAsync([FromRoute(Name = "categoryId")] int categoryId)
+        {
+            var book = await _bookService.GetBooksByCategoryIdAsync(categoryId);
+
+            var bookModel = _mapper.Map<IEnumerable<BookModel>>(book);
+
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Kategoriye Ait Kitaplar Getirildi.",
+                Data = bookModel
+            };
+
+            return response;
+        }
+
         [HttpPost]
         public async Task<ResponseModel> CreateBookAsync([FromBody] CreateBookModel createBookModel)
         {

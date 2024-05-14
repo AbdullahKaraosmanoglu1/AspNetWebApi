@@ -10,5 +10,7 @@ namespace BookApplication.Services.Service.BookServices
         Task<Book> UpdateAsync(Book entity);
         Task<bool> DeleteAsync(int id);
         Task SaveAsync();
+
+        Task<IEnumerable<Book>> GetBooksByCategoryIdAsync(int categoryId);
     }
 }

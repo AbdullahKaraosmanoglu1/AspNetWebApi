@@ -43,6 +43,11 @@ namespace BookApplication.Services.Service.BookServices
             return await (_bookRepository.GetAllAsync());
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByCategoryIdAsync(int categoryId)
+        {
+            return await (_bookRepository.GetBooksByCategoryIdAsync(categoryId));
+        }
+
         public async Task<Book> GetByIdAsync(int id)
         {
             return await (_bookRepository.GetByIdAsync(id));
