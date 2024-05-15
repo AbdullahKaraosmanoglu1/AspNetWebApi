@@ -1,4 +1,5 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 
 namespace BookApplication.Data.Repository
 {
@@ -10,5 +11,6 @@ namespace BookApplication.Data.Repository
         Task<T> UpdateAsync(T entity);
         Task<bool> DeleteAsync(int id);
         Task SaveAsync();
+        Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPagenationAsync(PaginationModel pagenationModel);
     }
 }
