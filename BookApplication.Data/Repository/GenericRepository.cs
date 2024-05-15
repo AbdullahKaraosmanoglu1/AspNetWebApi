@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Data.Repository
@@ -59,6 +60,20 @@ namespace BookApplication.Data.Repository
             _table.Update(entity);
 
             return entity;
+        }
+        public async Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPagenationAsync(PaginationModel paginationModel)
+        {
+            var startIndex = (paginationModel.PageNumber - 1) * paginationModel.PageSize;
+            var tablesOnPage = _table
+            .Where(x => x.IsDeleted == false && x.IsActive != false)
+            .Skip(startIndex)
+            .Take(paginationModel.PageSize);
+
+            var totalCount = await _table
+                  .Where(x => x.IsDeleted == false && x.IsActive != false)
+                  .CountAsync();
+
+            return (tablesOnPage, totalCount);
         }
     }
 }
