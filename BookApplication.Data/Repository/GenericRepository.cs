@@ -61,6 +61,7 @@ namespace BookApplication.Data.Repository
 
             return entity;
         }
+
         public async Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel paginationModel)
         {
             var startIndex = (paginationModel.PageNumber - 1) * paginationModel.PageSize;

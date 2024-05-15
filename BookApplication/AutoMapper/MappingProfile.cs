@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
 using BookApplication.Data.Models;
+using BookApplication.WebApi.Models.AdminModels;
 using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
 using BookApplication.WebApi.Models.LoginModels;
@@ -15,6 +16,10 @@ namespace BookApplication.WebApi.AutoMapper
 
         public MappingProfile()
         {
+            #region ADMİN
+            CreateMap<AdminModel, Admin>().ReverseMap();
+            #endregion
+
             #region BOOK
             CreateMap<BookModel, Book>().ReverseMap();
             CreateMap<CreateBookModel, Book>().ReverseMap();
