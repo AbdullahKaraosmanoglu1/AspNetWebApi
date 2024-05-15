@@ -30,9 +30,9 @@ namespace BookApplication.Data.Repository.UserRepository
             return await _userRepository.GetAllAsync();
         }
 
-        public Task<(IEnumerable<User> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
+        public async Task<(IEnumerable<User> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
         {
-            throw new NotImplementedException();
+            return await _userRepository.GetAllWithPaginationAsync(pagenationModel);
         }
 
         public async Task<User> GetByIdAsync(int id)

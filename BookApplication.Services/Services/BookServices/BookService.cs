@@ -1,4 +1,5 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.Data.Repository.BookRepository;
 using BookApplication.Services.NLog;
 using BookApplication.Services.SlugHelper;
@@ -41,6 +42,11 @@ namespace BookApplication.Services.Service.BookServices
         public async Task<IEnumerable<Book>> GetAllAsync()
         {
             return await (_bookRepository.GetAllAsync());
+        }
+
+        public async Task<(IEnumerable<Book> Books, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
+        {
+            return await _bookRepository.GetAllWithPaginationAsync(pagenationModel);
         }
 
         public async Task<IEnumerable<Book>> GetBooksByCategoryIdAsync(int categoryId)

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.Services.Service.RoleService;
 using BookApplication.Services.Service.UserServices;
 using BookApplication.Services.Services.AuthService;
@@ -38,6 +39,23 @@ namespace BookApplication.WebApi.Controllers
                 Code = "200",
                 Message = "Kullanıcılar Getirildi.",
                 Data = userModels
+            };
+
+            return response;
+        }
+
+        [HttpPost("GetAllWithPagination")]
+        public async Task<ResponseModel> GetAllWithPaginationAsync([FromBody] PaginationModel paginationModel)
+        {
+            var users = await _userService.GetAllWithPaginationAsync(paginationModel);
+
+            var userModel = users.Users.Select(users => _mapper.Map<UserModel>(users)).ToList();
+
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Kullanıcılar Getirildi.",
+                Data = new { Users = userModel, users.TotalCount }
             };
 
             return response;
