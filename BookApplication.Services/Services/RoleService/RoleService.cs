@@ -1,8 +1,7 @@
-﻿using BookApplication.Data.BookApplicationDbContext;
-using BookApplication.Data.Entity;
+﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.Data.Repository.RoleRepository;
 using BookApplication.Services.NLog;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Services.Service.RoleService
 {
@@ -34,6 +33,11 @@ namespace BookApplication.Services.Service.RoleService
         public async Task<IEnumerable<Role>> GetAllAsync()
         {
             return await (_RoleRepository.GetAllAsync());
+        }
+
+        public async Task<(IEnumerable<Role> T, int TotalCount)> GetAllWithPagenationAsync(PaginationModel pagenationModel)
+        {
+            return await _RoleRepository.GetAllWithPaginationAsync(pagenationModel);
         }
 
         public async Task<Role> GetByIdAsync(int id)

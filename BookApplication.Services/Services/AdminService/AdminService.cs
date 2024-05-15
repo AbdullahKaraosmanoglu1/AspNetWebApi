@@ -1,6 +1,6 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.Data.Repository.AdminRepository;
-using BookApplication.Data.Repository.UserRepository;
 using BookApplication.Services.NLog;
 
 namespace BookApplication.Services.Services.AdminService
@@ -29,6 +29,11 @@ namespace BookApplication.Services.Services.AdminService
         public async Task<IEnumerable<Admin>> GetAllAsync()
         {
             return await (_adminRepository.GetAllAsync());
+        }
+
+        public async Task<(IEnumerable<Admin> Admins, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
+        {
+            return await _adminRepository.GetAllWithPaginationAsync(pagenationModel);
         }
 
         public async Task<Admin> GetByIdAsync(int id)

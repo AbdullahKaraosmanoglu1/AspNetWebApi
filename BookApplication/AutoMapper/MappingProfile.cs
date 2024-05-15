@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
 using BookApplication.WebApi.Models.LoginModels;
@@ -44,6 +45,12 @@ namespace BookApplication.WebApi.AutoMapper
             CreateMap<RoleModel, CreateUserModel>()
                 .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap();
+            #endregion
+
+            #region PAGİNATİON MODEL
+
+            CreateMap<PaginationModel, UserModel>().ReverseMap();
+
             #endregion
         }
     }
