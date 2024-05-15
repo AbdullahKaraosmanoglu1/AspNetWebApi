@@ -7,6 +7,7 @@ using BookApplication.Services.Services.AuthService;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BookApplication.WebApi.Controllers
 {
@@ -18,13 +19,17 @@ namespace BookApplication.WebApi.Controllers
         private readonly IAuthService _authService;
         private readonly IMapper _mapper;
         private readonly IRoleService _roleService;
+        private readonly IMemoryCache _memoryCache;
+        private readonly IConfiguration _configuration;
 
-        public UserController(IUserService userService, IAuthService authService, IMapper mapper, IRoleService roleService)
+        public UserController(IUserService userService, IAuthService authService, IMapper mapper, IRoleService roleService, IMemoryCache memoryCache, IConfiguration configuration)
         {
             _userService = userService;
             _authService = authService;
             _mapper = mapper;
             _roleService = roleService;
+            _memoryCache = memoryCache;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -47,6 +52,13 @@ namespace BookApplication.WebApi.Controllers
         [HttpPost("GetAllWithPagination")]
         public async Task<ResponseModel> GetAllWithPaginationAsync([FromBody] PaginationModel paginationModel)
         {
+            var cacheKey = _configuration["CacheKey:Key"];
+
+            if(_memoryCache.TryGetValue(cacheKey, out ResponseModel cachedResponse))
+            {
+                return cachedResponse;
+            }
+
             var users = await _userService.GetAllWithPaginationAsync(paginationModel);
 
             var userModel = users.Users.Select(users => _mapper.Map<UserModel>(users)).ToList();
@@ -57,6 +69,13 @@ namespace BookApplication.WebApi.Controllers
                 Message = "Kullanıcılar Getirildi.",
                 Data = new { Users = userModel, users.TotalCount }
             };
+
+            
+            var cacheEntryOptions = new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
+            };
+            _memoryCache.Set(cacheKey, response, cacheEntryOptions);
 
             return response;
         }

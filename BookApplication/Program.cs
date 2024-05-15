@@ -37,6 +37,8 @@ builder.Services.AddCorsPolicyExtension(allowOrigin);
 
 builder.Services.AddAuthorization();/*Added*/
 
+builder.Services.AddMemoryCache();/*Added*/
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
