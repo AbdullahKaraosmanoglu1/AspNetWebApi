@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Data.Repository.AuthRepository
@@ -27,6 +28,11 @@ namespace BookApplication.Data.Repository.AuthRepository
         }
 
         public Task<IEnumerable<User>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<(IEnumerable<User> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
         {
             throw new NotImplementedException();
         }

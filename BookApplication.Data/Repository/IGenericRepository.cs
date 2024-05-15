@@ -11,6 +11,6 @@ namespace BookApplication.Data.Repository
         Task<T> UpdateAsync(T entity);
         Task<bool> DeleteAsync(int id);
         Task SaveAsync();
-        Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPagenationAsync(PaginationModel pagenationModel);
+        Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 
 namespace BookApplication.Services.Services.AdminService
 {
@@ -12,5 +13,6 @@ namespace BookApplication.Services.Services.AdminService
         Task SaveAsync();
 
         Task<Admin> GetByTokenAsync(string token);
+        Task<(IEnumerable<Admin> Admins, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel);
     }
 }

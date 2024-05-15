@@ -1,4 +1,5 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 
 namespace BookApplication.Data.Repository.UserBookRepository
 {
@@ -24,6 +25,11 @@ namespace BookApplication.Data.Repository.UserBookRepository
         public async Task<IEnumerable<UserBook>> GetAllAsync()
         {
             return await (_userBookRepository.GetAllAsync());
+        }
+
+        public Task<(IEnumerable<UserBook> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<UserBook> GetByIdAsync(int id)

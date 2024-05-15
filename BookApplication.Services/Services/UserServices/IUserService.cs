@@ -1,4 +1,5 @@
 ﻿using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 
 namespace BookApplication.Services.Service.UserServices
 {
@@ -12,5 +13,6 @@ namespace BookApplication.Services.Service.UserServices
         Task SaveAsync();
 
         Task<User> GetByTokenAsync(string token);
+        Task<(IEnumerable<User> Users, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel);
     }
 }
