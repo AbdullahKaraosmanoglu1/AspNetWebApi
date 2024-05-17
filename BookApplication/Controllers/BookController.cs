@@ -75,7 +75,7 @@ namespace BookApplication.WebApi.Controllers
 
             var books = await _bookService.GetBooksIsHomePageWithPaginationAsync(paginationModel);
 
-            var booksModel = books.Books.Select(users => _mapper.Map<BookModel>(users)).ToList();
+            var booksModel = books.Books.Select(booksMap => _mapper.Map<BookModel>(booksMap)).ToList();
 
             var response = new ResponseModel()
             {
