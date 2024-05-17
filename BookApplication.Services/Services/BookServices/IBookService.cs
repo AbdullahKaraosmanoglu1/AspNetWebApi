@@ -14,5 +14,6 @@ namespace BookApplication.Services.Service.BookServices
 
         Task<IEnumerable<Book>> GetBooksByCategoryIdAsync(int categoryId);
         Task<(IEnumerable<Book> Books, int TotalCount)> GetAllWithPaginationAsync(PaginationModel pagenationModel);
+        Task<(IEnumerable<Book> Books, int TotalCount)> GetBooksIsHomePageWithPaginationAsync(PaginationModel paginationModel);
     }
 }

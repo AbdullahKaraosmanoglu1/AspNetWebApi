@@ -19,6 +19,8 @@ namespace BookApplication.Data.Entity
         public int PageCount { get; set; }
         public int PrintingYear { get; set; }
         public decimal Price { get; set; }
+        public bool IsHomePage { get; set; }
+        public bool IsApproved { get; set; }
 
         public int BookCategoryId { get; set; }
         public BookCategory BookCategory { get; set; }

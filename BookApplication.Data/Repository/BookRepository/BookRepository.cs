@@ -41,6 +41,22 @@ namespace BookApplication.Data.Repository.BookRepository
             return await (_dbContext.Books.Where(x => x.BookCategoryId == categoryId).ToListAsync());
         }
 
+        public async Task<(IEnumerable<Book> Books, int TotalCount)> GetBooksIsHomePageWithPaginationAsync(PaginationModel paginationModel)
+        {
+            var startIndex = (paginationModel.PageNumber - 1) * paginationModel.PageSize;
+            var tablesOnPage = await _dbContext.Books
+            .Where(x => x.IsDeleted == false && x.IsActive != false && x.IsHomePage == true && x.IsApproved == true)
+            .Include(x => x.BookCategory)
+            .Skip(startIndex)
+            .Take(paginationModel.PageSize)
+            .ToListAsync();
+
+            var totalCount = await _dbContext.Books
+            .CountAsync(x => x.IsDeleted == false && x.IsActive != false && x.IsHomePage == true && x.IsApproved == true);
+
+            return (tablesOnPage, totalCount);
+        }
+
         public async Task<Book> GetByIdAsync(int id)
         {
             return await (_bookRepository.GetByIdAsync(id));
