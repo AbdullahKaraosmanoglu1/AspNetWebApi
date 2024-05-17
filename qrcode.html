@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center" style="background-color:#e2e2e2;">
+            <h1>QR Code Generator</h1>
+
+            <div>
+                <p>Enter Text to embed in QR Code</p>
+                <p><textarea name="txt" style="height:50px;width:350px;" required="required"></textarea></p>
+
+                <p>
+                    Image Size : <select name="size">
+                        <option value="100x100" selected>100x100</option>
+                        <option value="200x200">200x200</option>
+                        <option value="300x300">300x300</option>
+                    </select>
+                </p>
+                <p><input type="submit" value="Generate QR Code" id="qr-gn"></p>
+            </div>
+
+            <br />
+            <div id="qrcode"></div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="qrcode.js"></script>
+
+</body>
+</html>
