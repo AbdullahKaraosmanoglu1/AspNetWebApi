@@ -4,6 +4,7 @@ using BookApplication.Data.BookApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApplication.Data.Migrations
 {
     [DbContext(typeof(BookAppDataBaseContext))]
-    partial class BookAppDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240517072833_AddIsHomePageForBookEntity")]
+    partial class AddIsHomePageForBookEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,9 +113,6 @@ namespace BookApplication.Data.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<bool?>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")

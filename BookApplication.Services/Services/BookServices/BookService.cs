@@ -54,6 +54,11 @@ namespace BookApplication.Services.Service.BookServices
             return await (_bookRepository.GetBooksByCategoryIdAsync(categoryId));
         }
 
+        public async Task<(IEnumerable<Book> Books, int TotalCount)> GetBooksIsHomePageWithPaginationAsync(PaginationModel paginationModel)
+        {
+            return await (_bookRepository.GetBooksIsHomePageWithPaginationAsync(paginationModel));
+        }
+
         public async Task<Book> GetByIdAsync(int id)
         {
             return await (_bookRepository.GetByIdAsync(id));

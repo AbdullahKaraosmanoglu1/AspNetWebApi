@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using BookApplication.Services.Service.BookServices;
 using BookApplication.WebApi.Models;
 using BookApplication.WebApi.Models.BookModels;
+using BookApplication.WebApi.Models.UserModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BookApplication.WebApi.Controllers
 {
@@ -14,11 +17,15 @@ namespace BookApplication.WebApi.Controllers
     {
         private readonly IBookService _bookService;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
+        private readonly IMemoryCache _memoryCache;
 
-        public BookController(IBookService bookService, IMapper mapper)
+        public BookController(IBookService bookService, IMapper mapper, IConfiguration configuration, IMemoryCache memoryCache)
         {
             _bookService = bookService;
             _mapper = mapper;
+            _configuration = configuration;
+            _memoryCache = memoryCache;
         }
 
         [Authorize]
@@ -52,6 +59,37 @@ namespace BookApplication.WebApi.Controllers
                 Message = "İstenilen Kitap Getirildi.",
                 Data = bookModel
             };     
+
+            return response;
+        }
+
+        [HttpPost("GetHomePageBooksWithPagination")]
+        public async Task<ResponseModel> GetHomePageBooksWithPaginationAsync([FromBody] PaginationModel paginationModel)
+        {
+            var cacheKey = _configuration["CacheKey:Key"];
+
+            if (_memoryCache.TryGetValue(cacheKey, out ResponseModel cachedResponse))
+            {
+                return cachedResponse;
+            }
+
+            var books = await _bookService.GetBooksIsHomePageWithPaginationAsync(paginationModel);
+
+            var booksModel = books.Books.Select(users => _mapper.Map<BookModel>(users)).ToList();
+
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Anasayfa'da Gösterilecek Olan Kitaplar Getirildi.",
+                Data = new { Books = booksModel, books.TotalCount }
+            };
+
+
+            var cacheEntryOptions = new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
+            };
+            _memoryCache.Set(cacheKey, response, cacheEntryOptions);
 
             return response;
         }
