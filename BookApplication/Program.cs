@@ -29,12 +29,15 @@ builder.Services.AutoMapperExtension();
 builder.Services.ConfigureNLogServiceExtension();
 /*Configure JWT Token Extension*/
 builder.Services.ConfigureJwtBearerTokenExtension();
+builder.Services.AddCustomAuthorization();
 builder.Services.AddJwtAuthenticationExtension(builder.Configuration);
 /*Configure CORS-Policy Extension*/
 var allowOrigin = "AllowOrigin";
 builder.Services.AddCorsPolicyExtension(allowOrigin);
 
 builder.Services.AddAuthorization();/*Added*/
+
+builder.Services.AddMemoryCache();/*Added*/
 
 var app = builder.Build();
 
@@ -48,9 +51,9 @@ app.UseCors(allowOrigin);/*Added*/
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();/*Added*/
 app.UseAuthorization();
 
-app.UseAuthentication();/*Added*/
 
 app.MapControllers();
 

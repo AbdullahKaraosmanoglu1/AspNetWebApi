@@ -1,4 +1,6 @@
-﻿namespace BookApplication.WebApi.Models.UserModels
+﻿using BookApplication.Data.Entity;
+
+namespace BookApplication.WebApi.Models.UserModels
 {
     public class UserModel
     {
@@ -14,5 +16,7 @@
         public decimal MoneyAmount { get; set; }
         public string Password { get; set; }
         public string RefreshToken { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
     }
 }

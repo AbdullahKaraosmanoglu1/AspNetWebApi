@@ -1,5 +1,6 @@
 ﻿using BookApplication.Data.BookApplicationDbContext;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApplication.Data.Repository
@@ -21,21 +22,20 @@ namespace BookApplication.Data.Repository
             await _table.AddAsync(entity);
             entity.IsDeleted = false;
 
+
             return entity;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            T entity = await _table.Where(x => x.Id == id && x.IsDeleted != true).FirstOrDefaultAsync();
+            T entity = await _table.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted != true);
 
-            if (entity == null)
+            if (entity != null)
             {
-                return false;
+                entity.IsDeleted = true;
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
             }
-
-            entity.IsDeleted = true;
-            _dbContext.Entry(entity).State = EntityState.Modified;
-
             return true;
         }
 
@@ -46,7 +46,7 @@ namespace BookApplication.Data.Repository
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _table.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
+            return await _table.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
         }
 
         public async Task SaveAsync()
@@ -60,6 +60,21 @@ namespace BookApplication.Data.Repository
             _table.Update(entity);
 
             return entity;
+        }
+
+        public async Task<(IEnumerable<T> T, int TotalCount)> GetAllWithPaginationAsync(PaginationModel paginationModel)
+        {
+            var startIndex = (paginationModel.PageNumber - 1) * paginationModel.PageSize;
+            var tablesOnPage = _table
+            .Where(x => x.IsDeleted == false && x.IsActive != false)
+            .Skip(startIndex)
+            .Take(paginationModel.PageSize);
+
+            var totalCount = await _table
+                  .Where(x => x.IsDeleted == false && x.IsActive != false)
+                  .CountAsync();
+
+            return (tablesOnPage, totalCount);
         }
     }
 }

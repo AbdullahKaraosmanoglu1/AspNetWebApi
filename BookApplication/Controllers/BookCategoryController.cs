@@ -27,10 +27,12 @@ namespace BookApplication.WebApi.Controllers
 
             var bookCategoryModel = _mapper.Map<IEnumerable<BookCategoryModel>>(bookCategories);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Bütün Kitaplar Kategorileri Getirildi.";
-            response.Data = bookCategoryModel;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Bütün Kitaplar Kategorileri Getirildi.",
+                Data = bookCategoryModel
+            };
 
             return response;
         }
@@ -42,10 +44,12 @@ namespace BookApplication.WebApi.Controllers
 
             var bookCategoryModel = _mapper.Map<BookCategoryModel>(bookCategory);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "İstenilen Kitap Kategorisi Getirildi.";
-            response.Data = bookCategoryModel;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "İstenilen Kitap Kategorisi Getirildi.",
+                Data = bookCategoryModel
+            };            
 
             return response;
         }
@@ -61,10 +65,12 @@ namespace BookApplication.WebApi.Controllers
 
             var bookCategoryModelMap = _mapper.Map<BookCategoryModel>(createBookCategory);
 
-            var response = new ResponseModel();
-            response.Code = "200";
-            response.Message = "Kitap Kategorisi Başarılı Bir Şekilde Oluşturuldu.";
-            response.Data = bookCategoryModelMap;
+            var response = new ResponseModel()
+            {
+                Code = "200",
+                Message = "Kitap Kategorisi Başarılı Bir Şekilde Oluşturuldu.",
+                Data = bookCategoryModelMap
+            };            
 
             return response;
         }
@@ -78,9 +84,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _bookCategoryService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Kitap Kategorisi Başarılı Bir Şekilde Güncellendi.";
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Kitap Kategorisi Başarılı Bir Şekilde Güncellendi."
+            };            
 
             return response;
         }
@@ -92,10 +100,11 @@ namespace BookApplication.WebApi.Controllers
 
             await _bookCategoryService.SaveAsync();
 
-            var response = new ResponseModel();
-            response.Code = "204";
-            response.Message = "Kitap Kategorisi Başarılı Bir Şekilde Silindi";
-
+            var response = new ResponseModel()
+            {
+                Code = "204",
+                Message = "Kitap Kategorisi Başarılı Bir Şekilde Silindi"
+            };
 
             return response;
         }

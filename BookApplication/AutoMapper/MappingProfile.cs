@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using BookApplication.Data.Entity;
+using BookApplication.Data.Models;
+using BookApplication.WebApi.Models.AdminModels;
 using BookApplication.WebApi.Models.BookCategoryModels;
 using BookApplication.WebApi.Models.BookModels;
+using BookApplication.WebApi.Models.LoginModels;
+using BookApplication.WebApi.Models.RoleModels;
 using BookApplication.WebApi.Models.UserBookModels;
 using BookApplication.WebApi.Models.UserModels;
 
@@ -12,6 +16,10 @@ namespace BookApplication.WebApi.AutoMapper
 
         public MappingProfile()
         {
+            #region ADMİN
+            CreateMap<AdminModel, Admin>().ReverseMap();
+            #endregion
+
             #region BOOK
             CreateMap<BookModel, Book>().ReverseMap();
             CreateMap<CreateBookModel, Book>().ReverseMap();
@@ -34,6 +42,20 @@ namespace BookApplication.WebApi.AutoMapper
             CreateMap<UserModel, User>().ReverseMap();
             CreateMap<CreateUserModel, User>().ReverseMap();
             CreateMap<UpdateUserModel, User>().ReverseMap();
+            CreateMap<LoginModel, User>().ReverseMap();
+            #endregion
+
+            #region ROLE
+            CreateMap<RoleModel, Role>().ReverseMap();
+            CreateMap<RoleModel, CreateUserModel>()
+                .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
+            #endregion
+
+            #region PAGİNATİON MODEL
+
+            CreateMap<PaginationModel, UserModel>().ReverseMap();
+
             #endregion
         }
     }
